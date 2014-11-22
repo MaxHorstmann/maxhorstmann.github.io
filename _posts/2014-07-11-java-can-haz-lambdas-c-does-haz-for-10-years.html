@@ -1,0 +1,54 @@
+---
+layout: post
+title: Java can haz Lambdas (C# does haz for 10 years)
+date: 2014-07-11 20:23:46.000000000 +00:00
+categories:
+- C#
+- Java
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _knews_automated: '0'
+  _edit_last: '1'
+  _oembed_fdcd9d06c7e27b7d8b7b2384ae53a97b: <blockquote class="twitter-tweet" width="550"><p>83%
+    of Java developers are excited about lambda expressions in Java 8. The remaining
+    17% are out buying their first color TV.</p>&mdash; Max Horstmann (@Max_Horstmann)
+    <a href="https://twitter.com/Max_Horstmann/statuses/441232570940792832">March
+    5, 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js"
+    charset="utf-8"></script>
+  _oembed_654c05f7e8170720a0718e6ce1c22e58: <blockquote class="twitter-tweet" width="550"><p>83%
+    of Java developers are excited about lambda expressions in Java 8. The remaining
+    17% are out buying their first color TV.</p>&mdash; Max Horstmann (@Max_Horstmann)
+    <a href="https://twitter.com/Max_Horstmann/statuses/441232570940792832">March
+    5, 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js"
+    charset="utf-8"></script>
+author:
+  login: maxhorstmann
+  email: max.horstmann@gmail.com
+  display_name: Max
+  first_name: ''
+  last_name: ''
+---
+<p>Did you hear? Java 8 now has Lambda expressions!</p>
+<p>My first reaction was this:</p>
+<p>https://twitter.com/Max_Horstmann/status/441232570940792832</p>
+<p>Lambda expressions are a compact way to represent functions inline as expressions. If you're a C# developer like me, you've already been using them for years. For example, with <a href="http://msdn.microsoft.com/en-us/library/bb397919.aspx">LINQ to Objects</a>:</p>
+<pre lang="Java">var numbers = new List<int>() {1, 5, 10, 12, 13, 17, 20, 22};
+var evenNumbers = numbers.Where(m => m%2 == 0);
+</int></pre>
+<p>The <strong>.Where</strong> filter function isn't defined by <a href="http://msdn.microsoft.com/en-us/library/6sh2ey19(v=vs.110).aspx">List&lt;T&gt;</a> itself by the way, it's an <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">extension method</a> defined by System.Linq.Enumerable. Look at its <a href="http://referencesource.microsoft.com/#System.Core/System/Linq/Enumerable.cs">source code</a> (yay, great move Microsoft!) and you'll see that its implementation contains no magic: it's simply iterating over the entire collection, returning elements for which the predicate is true (<a href="http://referencesource.microsoft.com/#System.Core/System/Linq/Enumerable.cs#140">here</a>).</p>
+<p>Here's the same code snippet in Java 8:</p>
+<pre lang="Java">
+List<integer> numbers = Arrays.asList(1, 5, 10, 12, 13, 17, 20, 22);
+Stream<integer> evenNumbers = numbers.stream().filter(m -> m%2 == 0);
+</integer></integer></pre>
+<p>You'll notice a few small differences: Java still doesn't have implicit typing and won't allow you using the <strong>var </strong>keyword. So <em>you</em> will have to figure out the return type of an expression, the compiler won't do it for you. Also, you'll notice <strong>stream()</strong> - you can now <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#filter-java.util.function.Predicate-">filter</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-">map</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#sorted--">sort</a>, basically do all the good stuff C# developers already know from LINQ to Objects. Not all of the operators are defined on the various collection classes directly though, but on <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html">Stream</a>.</p>
+<p><em>Some</em> operators have been added directly to the collection classes though. For example, <strong>sort</strong> (which makes sense, you wouldn't wanna "sort" a stream):</p>
+<pre lang="Java">numbers.sort((x, y) -> Integer.compare(x, y));</pre>
+<p>So, did <strong>.sort</strong> get added to the existing List&lt;T&gt;? Or did Java 8 also introduce extension methods like in .NET did, like, 10 years ago?</p>
+<p>It's actually neither. Specifically to support Lamdas, Java 8 also introduces <a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html"><em>default methods</em></a>, also known as <em>defender methods</em> or (confusingly, at least for .NET programmers) <em>virtual extension methods</em>. In a nutshell, default methods allow for providing a default method implementation <strong>on an interface</strong> (!). Yes, you read this right. An interface which contains implementation. While this sounds akward, it's sort of an elegant way to add functionality to existing interfaces like List without breaking everyone's existing code.</p>
+<p>By the way, Eclipse annotates default methods for you:</p>
+<p><a href="http://maxhorstmann.net/wp-content/uploads/2014/07/default.png"><img class="alignnone size-full wp-image-529" src="assets/default.png" alt="default" width="156" height="176" /></a></p>
+<p>Anyways. Welcome to 2014, dear Java developers! And fingers crossed, Android developers, this is about to make your life a lot easier as well in the near future.</p>

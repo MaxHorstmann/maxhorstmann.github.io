@@ -1,0 +1,52 @@
+---
+layout: post
+title: ! 'Web apps with no backend code: the Jekyll-Angular-Firebase (JAF) stack'
+date: 2014-09-10 15:01:56.000000000 +00:00
+categories:
+- AngularJS
+- ElasticSearch
+- Firebase
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _knews_automated: '0'
+  _edit_last: '1'
+author:
+  login: maxhorstmann
+  email: max.horstmann@gmail.com
+  display_name: Max
+  first_name: ''
+  last_name: ''
+---
+<p>If you're a web developer like me, you're probably spending a lot of time writing and maintaining backend code.</p>
+<p>Now, for a moment, imagine <em>there is no backend code</em>. Not a single line. Your entire web application consists of a set of static files, served inexpensively by a CDN or for free by <a href="https://pages.github.com">GitHub Pages</a>. There's still code, but it runs entirely on the client in JavaScript, supported by the framework of your choice. For reading and writing <em>data</em>, it talks directly to a <em>Backend as a Service</em> (BaaS) provider (think database plus authorization and security rules).</p>
+<p>How far can you get with this approach?</p>
+<p>Out of curiosity, I've built a simple test app using three separate technologies:</p>
+<ul>
+<li><a href="http://jekyllrb.com/">Jekyll</a>, a very slick static site generator, for sharing navigation and layout across multiple pages;</li>
+<li><a href="https://angularjs.org/">AngularJS</a>, which doesn't really need an introduction; and</li>
+<li><a href="https://www.firebase.com">Firebase</a>, a commercial BaaS provider, acting as the data store in the cloud. It also provides a set of basic services such as authentication, authorization and data validation.</li>
+</ul>
+<p>Every tech stack needs a acronym, so let's call this the <strong>JAF</strong> stack!</p>
+<p>Why Firebase, by the way? Try it out, in case you haven't done so: it's got an incredibly easy to use API and is loads of fun. You'll find yourself building real-time chat apps within minutes.</p>
+<p>Anyways - click <a href="http://maxhorstmann.github.io/jekyll-angular-firebase/" target="_blank">here</a> to try out the demo app. It's just two sections (if it works with two, it'll work with many): <em>Notes</em>, which is an extremely simple bulletin board ....</p>
+<p><a href="http://maxhorstmann.net/wp-content/uploads/2014/09/notes.png"><img class="alignnone wp-image-574 " src="assets/notes.png" alt="notes" width="512" height="323" /></a></p>
+<p>...and <em>People</em>, which is - well, a list of people with their phone numbers and email addresses. Try login/logout in the top right corner (it's just a mock, you won't have to actually create an account) and note how you'll only be able to edit when signed in.</p>
+<p><a href="http://maxhorstmann.net/wp-content/uploads/2014/09/people.png"><img class="alignnone  wp-image-575" src="assets/people.png" alt="people" width="539" height="214" /></a></p>
+<p>That was fun! By the way, did you notice how data gets updated in real-time? Open two separate browser windows and try it out.</p>
+<p>Some limitations of the JAF stack:</p>
+<ul>
+<li>Security rules and data validation need to happen server-side (and optionally client-side, but only for convenience. Note e.g. how the "delete" buttons disappear when not signed in). So, make sure your BaaS provider has you covered for all your security and validation needs. Firebase comes with a very expressive JSON-based <a href="https://www.firebase.com/docs/security/guide.html">rules language</a> for that.</li>
+<li>There's no easy way to run advanced queries/filters on your Firebase data. Notice e.g. how the filtering functionality on the People section happens client-side (after pulling the complete data set, which won't scale for large data volumes). Supposedly, Firebase are working on that and meanwhile officially <a href="https://www.firebase.com/blog/2014-01-02-queries-part-two.html">recommend</a> duplicating your data to an Elasticsearch cluster... :/</li>
+<li>Obviously, since all your code runs client-side, it's public. If that's a problem, the whole idea won't work.</li>
+<li>No server-side error log, so bugs might be harder to spot.</li>
+<li>Firebase is a commercial offering. So, while you can serve your web app for free from GitHub pages, you'll still have to pay for Firebase depending on data/transaction volumes.</li>
+<li>Jekyll and Angular share the same expression syntax {{ ... }}. Fortunately, Angular's can be be <a href="http://stackoverflow.com/questions/25334327/change-start-and-end-symbol-in-jekyll-to-avoid-angular-conflict">changed</a>, so this is only a minor inconvenience.</li>
+</ul>
+<p>Despite these limitations, I enjoyed this little experiment and will potentially consider using the JAF stack for writing no-backend web-based CRUD applications going forward: Firebase's Angular integration works almost seamlessly, Jekyll makes it easy to share navigation and layout elements across multiple pages, and I just like the idea of not having to maintain any backend servers and backend code.</p>
+<p>Also, GitHib Pages makes it particularly easy to deploy and update Jekyll-based web apps: just a git push, and the Jekyll generator will run on their end, and your app has been updated. Doesn't get much easier than that.</p>
+<p>What are your thoughts: will writing custom backend code become less important going forward as BaaS providers such as Firebase become more mature? Will you consider the JAF stack or a similar set technologies for building your next web site?</p>
+<p><a href="https://news.ycombinator.com/item?id=8298385">Discuss on HN</a>.</p>
+<p>&nbsp;</p>

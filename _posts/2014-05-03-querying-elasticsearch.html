@@ -1,0 +1,63 @@
+---
+layout: post
+title: Querying Elasticsearch
+date: 2014-05-03 23:45:43.000000000 +00:00
+categories:
+- ElasticSearch
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _knews_automated: '0'
+  _edit_last: '1'
+  al2fb_facebook_exclude: '1'
+  al2fb_facebook_exclude_video: '1'
+  al2fb_facebook_nolike: '1'
+  al2fb_facebook_nointegrate: '1'
+author:
+  login: maxhorstmann
+  email: max.horstmann@gmail.com
+  display_name: Max
+  first_name: ''
+  last_name: ''
+---
+<p>One of the many things I like about <a href="http://www.elasticsearch.org/">Elasticsearch</a> is its JSON-based <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html">domain-specific language</a> (DSL). For example, a simple search query looks like this:</p>
+<pre lang="JSON" line="1">{
+  "from": 0,
+  "size": 10,
+  "query": {
+    "query_string": {
+      "query": "banana"
+    }
+  }
+}</pre>
+<p><a href="http://thedudeabides.com/about/">Kimchy</a> could have created a SQL-like query language for Elasticsearch, in which case the query above would probably look somewhat like this:</p>
+<pre lang="SQL" line="1">query (query_string = "banana") with from(0), size(10)</pre>
+<p>Fortunately, he didn't. Let me explain why I think that was a particularly smart choice.</p>
+<p>Going back to SQL and relational databases for a second. As a developer, one of the design choices you might still have to make is whether or not to use an object-relational mapper (ORM). Yes, it's been 10 years since ORMs have famously been called <a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">The Vietnam of Computer Science</a>, and yes, we live in NoSQL times (in fact, Elasticsearch itself supposedly makes an excellent NoSQL data store now). Meanwhile in the real world (ya know, enterprises and such), relational databases and ORMs are alive and doing well.</p>
+<p>Anyways - should you choose to actually use an ORM on top of your relational store, you've just introduced an additional layer of abstraction (what did Joel <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">say</a> about those again?). If you're going down the no-ORM route on the other hand, you're likely to fiddle with raw strings in your code at some point, which can get messy. And, even if your language is statically typed, the compiler won't type-check anything for you.</p>
+<p>In the .NET world,  <a href="https://github.com/Mpdreamz">@Mpdreamz</a>' excellent <a href="http://nest.azurewebsites.net">NEST</a> library is what I would consider the equivalent of an ORM, with similar pros (static type checking, code completion) and cons. If you want to go no-ORM here to avoid the extra layer of abstraction, you still won't have to fiddle with raw query strings, ever - thanks to the fact that the query DSL is JSON-based, serializing anonymous classes does the job for you:</p>
+<pre lang="CSharp" line="1">
+ var page = 1;
+ var pageSize = 10;
+ var searchText = "banana";
+ var queryObject = new
+      {
+        from = (page - 1) * pageSize,
+        size = pageSize,
+        query = new
+        {
+          query_string = new { query = searchText }
+        }
+      };
+
+ var queryString = JsonConvert.SerializeObject(queryObject); // JSON.NET
+</pre>
+<p>Case in point: last week, I rewrote a fairly complex search query. It's the one that finds companies (more precisely, <a href="http://careers.stackoverflow.com/products/company-pages">company pages</a>) if you hit up search on <a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a>:</p>
+<p><a href="http://maxhorstmann.net/wp-content/uploads/2014/05/search.png"><img class="alignnone size-full wp-image-483" src="assets/search.png" alt="search" width="837" height="171" /></a></p>
+<p>Well, maybe it's not <em>that</em> complex, but some of the pieces are a little bit tricky: depending on the search parameters, results need to be geo-filtered in various ways. Sorting of results depends on other factors, such as the number of search terms, and the physical location of the user. Then, there's paging of results. Finally, we're also throwing in a <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-suggesters-term.html">term suggestor</a> to check for similarly spelled search terms.</p>
+<p>To me, dynamically composing and troubleshooting the query was <em>much</em> easier and straightforward once I switched from statically typed helpers to serialized anonymous classes. They are very close to the actual raw JSON, so you can easily copy&amp;paste snippets, run and troubleshoot them directly on Elasticsearch, and then go back to your code and make fixes as necessary. No "translation" needs to happen anymore between the world of "raw" queries and a statically typed client library.</p>
+<p>The compiler won't be able to check if what you're producing is a valid Elasticsearch query - for that, you want to create integration tests. However, unlike when fiddling with raw strings (like you would do with SQL queries), it will most of the time prevent you from producing syntactically invalid JSON.</p>
+<p>So, this is how I will build all my Elasticsearch queries from now on. If only there was a similar JSON-based query language for my relational data store as well...</p>
+<p><a href="https://news.ycombinator.com/item?id=7693220">Discuss on HN</a>.</p>

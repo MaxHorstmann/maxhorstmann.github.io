@@ -1,0 +1,68 @@
+---
+layout: post
+title: Why Dart should learn JSON while it's still young
+date: 2014-01-31 23:34:17.000000000 +00:00
+categories:
+- Dart
+tags:
+- Dart
+- JSON
+status: publish
+type: post
+published: true
+meta:
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:310;s:16:"restored_by_user";i:43322845;s:13:"restored_time";i:1390915411;}
+  _publicize_pending: '1'
+  _knews_automated: '0'
+author:
+  login: maxhorstmann
+  email: max.horstmann@gmail.com
+  display_name: Max
+  first_name: ''
+  last_name: ''
+---
+<p><em>2/14/2014 <strong>UPDATE 2</strong>: filed an <a href="https://code.google.com/p/dart/issues/detail?id=16843">issue</a> for the DateTime-&gt;ISO8601 serialization. </em></p>
+<p><em>2/2/2014 see <strong>UPDATE</strong> at the end</em></p>
+<p><span style="line-height:1.714285714;font-size:1rem;">Remember how easy it was to learn your native language as a toddler? Of course you don't, and that's the point. Grammar and vocabulary somehow got hard-wired in your brain while you were very young, and pretty much all you had to do was listen and sleep. As we all know, it's much harder to learn another language later in life. </span></p>
+<p><span style="line-height:1.714285714;font-size:1rem;">One of Google's youngest babies, the </span><a style="line-height:1.714285714;font-size:1rem;" href="https://www.dartlang.org">Dart</a><span style="line-height:1.714285714;font-size:1rem;"> programming language, must have been </span><a style="line-height:1.714285714;font-size:1rem;" href="http://gotocon.com/aarhus-2011/presentation/Opening%20Keynote:%20Dart,%20a%20new%20programming%20language%20for%20structured%20web%20programming">conceived</a><span style="line-height:1.714285714;font-size:1rem;"> some time in 2011 and was finally </span><a style="line-height:1.714285714;font-size:1rem;" href="http://blog.chromium.org/2013/11/dart-10-stable-sdk-for-structured-web.html">born</a><span style="line-height:1.714285714;font-size:1rem;"> in November 2013. So, it's fair to say that it's still it its infancy.</span></p>
+<p>I like that Dart allows for using <em>the same language and framework</em> for browser development (potentially an SPA powered by <a href="http://blog.angulardart.org/">AngularDart</a>) and for back-end code. Yes, just like node.js. But without having to deal with Javascript.</p>
+<p>Here's one suggestion though I wanna make to Google's Dart team:<strong> teach your baby Dart to speak JSON, the web's data-interchange format, while it's still young. </strong></p>
+<p>"Wait a minute", you might say, "what hell are you talking about? Dart does already speak JSON. There's <a href="https://api.dartlang.org/docs/channels/stable/latest/dart_convert.html">dart:convert</a>, which allows you to decode and encode all day long."</p>
+<p>Yes. But for a language designed as <em>a new platform for scalable web app engineering, </em>JSON shouldn't come as an afterthought, hidden somewhere in a library. JSON is everywhere on the web, and Dart should speak to you and listen to you in JSON like it's its native language. The Dart editor should be able to display a JSON serialization of anything the mouse pointer touches. Dart should <em>breathe</em> JSON. Let me give you an example:</p>
+<p>A few weeks ago, I found it surprisingly hard to serialize a simple (plain-old) Dart object like</p>
+<pre><code>class Customer
+{
+  int Id;
+  String Name;
+}</code></pre>
+<p>to this (very common) JSON representation</p>
+<pre><code>{
+    "Id": 17,
+    "Name": "John"
+}</code></pre>
+<p>and ended up posting <a href="http://stackoverflow.com/questions/20024298/add-json-serializer-to-every-model-class">this</a> question on Stackoverflow. It took me a bit by surprise when Google's Developer Advocate for Dart, Seth Ladd, replied that</p>
+<blockquote><p>Unfortunately, there's no universal JSON serialization of objects for all platforms.</p></blockquote>
+<p><span style="line-height:1.714285714;font-size:1rem;">Well, that's true. JSON has been designed as a <em>data interchange format</em>, which doesn't cover the platform and language specific serialization aspects. In fact, JSON is <em>very</em> lightweight by design. Side-note: I recommend reading <a href="http://www.amazon.com/gp/product/B00F5BS966/ref=docs-os-doi_0">RESTful Web APIs</a> to learn more about emerging standards sitting on top of JSON, such as <a href="http://amundsen.com/media-types/collection/format/">Collection+JSON</a>. </span></p>
+<p>However, as said: the web speaks JSON. Almost every RESTful API speaks JSON (well, a few still speak XML). The Twitter, Facebook, and Stack Exchange APIs speak JSON. Therefore, I think the simple serialization format above - even if not part of any formal standard - should become the <em>default</em> serialization of a Dart object.</p>
+<p>So, just typing</p>
+<pre><code>var json = JSON.encode(customer);</code></pre>
+<p>should give me the the simple JSON representation of customer <em>by default</em>. As pointed out in the Stackoverflow question, I should not be required to explicitly implement <em>toJson()</em> or use a third-party library such as Alexander Tkachev <a href="http://pub.dartlang.org/packages/exportable">exportable</a> package (although I have to admit it's pretty neat).</p>
+<p><span style="line-height:1.714285714;font-size:1rem;">There's one more thing - </span><strong style="line-height:1.714285714;font-size:1rem;">DateTime</strong><span style="line-height:1.714285714;font-size:1rem;">. Unfortunately, </span><a style="line-height:1.714285714;font-size:1rem;" href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf">ECMA-404</a><span style="line-height:1.714285714;font-size:1rem;"> doesn't standardize how to serialize dates. </span><a style="line-height:1.714285714;font-size:1rem;" href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a><span style="line-height:1.714285714;font-size:1rem;">, however, does. Dart's </span><a style="line-height:1.714285714;font-size:1rem;" href="https://api.dartlang.org/docs/channels/stable/latest/dart_core/DateTime.html">DateTime</a><span style="line-height:1.714285714;font-size:1rem;"> class already "complies with a subset of ISO 8601" via its </span><em style="line-height:1.714285714;font-size:1rem;">parse</em><span style="line-height:1.714285714;font-size:1rem;"> method..</span></p>
+<p>So, here's another thing I wanna add to my suggestion: consider adapting ISO 8601 for a default JSON serialization of DateTime, so the following just works:</p>
+<pre><code>var dt = DateTime.parse("2014-01-26T11:38:17");
+print(JSON.encode(dt));</code></pre>
+<p>As of Dart 1.1.1, this will throw:</p>
+<pre><code>Unhandled exception:
+Converting object to an encodable object failed.
+#0 _JsonStringifier.stringifyValue (dart:convert/json.dart:416)
+#1 _JsonStringifier.stringify (dart:convert/json.dart:336)
+#2 JsonEncoder.convert (dart:convert/json.dart:177)
+#3 JsonCodec.encode (dart:convert/json.dart:106)</code></pre>
+<p><span style="line-height:1.714285714;font-size:1rem;"><a href="https://news.ycombinator.com/item?id=7159926">Discuss on HN</a>.</span></p>
+<p><strong>UPDATE </strong>- lots of very good feedback on Hacker News, here are some key points and my thoughts:</p>
+<ul>
+<li>Symbols (see <a href="https://news.ycombinator.com/item?id=7160298">skybrian</a>'s top rated comment; also pointed out by <a href="https://news.ycombinator.com/item?id=7160421">floitsch</a>): the kind of default serialization I'm proposing requires preservation of symbols, which presents challenges around minimization (keep in mind that Dart code has to run in a browser), inheritance, and dynamic types. Great point, I haven't thought of that. A required class annotation such as @json (see <a href="https://news.ycombinator.com/item?id=7160970">zubspace</a>'s suggestion) might at least partially address these issues.<br />
+By the way: some other JSON serializers such as <a href="https://github.com/ServiceStack/ServiceStack.Text">ServiceStack.Text</a> (.NET) use reflection to serialize <em>all</em> member fields of an object <em>unless</em> the class is decorated with [DataContract], [DataMember] attributes in which case serialization becomes opt-in per member field. Dart could at least mimic the latter behavior.</li>
+<li>"JSON has no support for encoding new types into the serialization" (<a href="https://news.ycombinator.com/item?id=7160487">deathanatos</a>' comment) - as <a href="https://news.ycombinator.com/item?id=7161459">pcwalton</a> points out, this can be addressed by using Dart's (optional) static type information. DateTime is a very common type and should have a default serialization, and it should be ISO 8601. To be exact, RFC 3339 (which is a subset), as <a href="https://news.ycombinator.com/item?id=7160237">daurminator</a> points out.</li>
+<li>"Can already be done" - for instance, <a href="https://news.ycombinator.com/item?id=7160421">floitsch</a> points out that "It's extremely easy to get the behavior you want. [...] This way you pay the price when you want to, and don't force it on all users." - I certainly agree with the latter point <em>if</em> adding a default/out of the box JSON serialization does indeed add significant overhead, impacting all users including those which don't require it. On the flipside, if a cost-effective solution can be found - e.g. by providing a default JSON serialization via class annotations - I feel that it should be part of Dart's core and not up to individual developers to home-brew their own solution to a very common problem. In the particular case of DateTime, I'm pretty sure that adding a default JSON serialization now will increase interoperability between Dart-based services and sites in the future.</li>
+</ul>

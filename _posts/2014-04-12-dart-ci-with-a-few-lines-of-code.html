@@ -1,0 +1,94 @@
+---
+layout: post
+title: Dart + CI with a few lines of code
+date: 2014-04-12 13:04:52.000000000 +00:00
+categories:
+- Continuous Deployment
+- Dart
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  _knews_automated: '0'
+  _s2mail: 'yes'
+author:
+  login: maxhorstmann
+  email: max.horstmann@gmail.com
+  display_name: Max
+  first_name: ''
+  last_name: ''
+---
+<p><span style="font-size: 1rem; line-height: 1.714285714;"><a href="https://www.dartlang.org/">Dart</a> not only runs in the browser, but also on the <a href="http://blog.sethladd.com/2013/09/forms-http-servers-and-polymer-with-dart.html">server</a>. Just like JavaScript, since the invention of node.js. </span></p>
+<p>Here are two simple answers for two practical questions:</p>
+<p>1. What's keeping my Dart process alive?<br />
+2. How can I set up continuous integration?</p>
+<p><strong>Keep Yourself Alive - Keep Yourself Aliii-hiive ...</strong></p>
+<p>Let's say you wrote a social networking web site in Dart, like this:</p>
+<pre lang="java" line="1">
+ import 'dart:io';
+ import 'dart:math';
+ void main() {
+   HttpServer.bind(InternetAddress.ANY_IP_V4, 80)
+     .then((HttpServer server) {
+       server.listen((HttpRequest request) {
+         var n = (new Random()).nextInt(1000);
+         request.response.statusCode = 200;
+         request.response.write(
+            "<html><body><h2>Welcome to THE-BEST-SOCIAL-SITE 2.0!</h2>
+             You have $n friends.</body></html>");
+         request.response.close();
+ });});}</pre>
+<p>Done! Now let's quickly copy the file to your server and spawn a new Dart process:</p>
+<pre>$ dart social.dart</pre>
+<p>Your site is live and millions of users have started flocking towards it... until your hosting provider decides to reboot your server and you'll have to restart the process manually. Or, until an uncaught exception kills your Dart process.</p>
+<p>Simple fix: let <a href="http://upstart.ubuntu.com/">upstart</a> manage your Dart process. First, install it - for example, in Ubuntu:</p>
+<pre>$ sudo apt-get install upstart</pre>
+<p>Now, create a new config file in /etc/init. For example, social.conf:</p>
+<pre lang="bash" line="1">exec /usr/bin/dart social.dart >> /var/log/social/$(date -d "today" +"%Y_%m_%d_%H_%M_%S").log
+start on filesystem and static-network-up
+stop on runlevel [016]
+respawn</pre>
+<p><span style="font-size: 1rem; line-height: 1.714285714;">You're ready to go! As a test, reboot the server and check if your web site is up and running afterwards. Now that was easy!</span></p>
+<p><strong style="line-height: 1.714285714; font-size: 1rem;">Continuous integration - or not integration at all ... ship-rooom-meetings - leave the hall!</strong></p>
+<p>Continuous integration (CI) is awesome. No need for painful integrations and deployments, just get your code out there. In fact, if your project is at an early stage, you might wanna just ship to your production server on every check-in. Well, maybe to a staging environment first, and then run a bunch of automated tests before going to prod. But let's keep simple for now.</p>
+<p>There are a few CI sites and tools out there supporting Dart natively, such as <a href="https://drone.io/">drone.io</a>. The way they typically work is: check-in triggers a build, which also runs a bunch of tests, and a successful build triggers a deployment.</p>
+<p>To get you started, here's a simple CI setup for your Dart server which won't require any of these tools yet - focus on your product and deal with making that technology decision later.</p>
+<p><span style="line-height: 1.714285714; font-size: 1rem;">First, create a build&amp;deployment script. Just a simple shell script will do the job for now, something like:</span></p>
+<pre lang="bash" line="1">#!/bin/bash
+rm -rf social
+git clone git://github.com/MyUserName/social.git
+stop social
+rm -rf /opt/social/*
+cp -r social/* /opt/social/
+cd /opt/social/
+pub get
+start social</pre>
+<p><span style="line-height: 1.714285714; font-size: 1rem;">Second, set up a web hook endpoint on your production server, listening on some obscure port and triggering the deployment script on every POST. Of course, the web hook endpoint is also written in Dart:</span></p>
+<pre lang="java" line="1">
+import 'dart:io';
+import 'dart:convert';
+void main() {
+   HttpServer.bind(InternetAddress.ANY_IP_V4, 8977)
+     .then((HttpServer server) {
+       server.listen((HttpRequest request) {
+         if (request.method=="POST") {
+           print('Webhook triggered at ' + new DateTime.now().toString());
+           request.response.statusCode = 200;
+           Process.start('deploy.sh', []).then((process) {
+             process.stdout.transform(new Utf8Decoder())
+                        .transform(new LineSplitter())
+                        .listen((String line) => request.response.writeln(line));
+             process.exitCode.then((exitCode) {
+               request.response.writeln('Exit code = $exitCode');
+               request.response.close();
+             });
+           });
+         }
+ });});}</pre>
+<p>Latest version of webhook.dart is <a href="https://github.com/dartist/dart-upstart/blob/master/webhook.dart">here</a>.</p>
+<p><span style="font-size: 1rem; line-height: 1.714285714;">Lastly - add the web hook to your repository and make sure it gets triggered on every check-in. For example, in GitHub:</span></p>
+<p><a href="http://maxhorstmann.net/wp-content/uploads/2014/04/webhook.png"><img class="alignnone size-full wp-image-430" alt="webhook" src="assets/webhook.png" width="933" height="497" /></a></p>
+<p>Nothing fancy - no security, no notifications, no build dependencies etc, but took only a few minutes to set up. Now write some server-side Dart code and push it out!</p>
+<p><span style="font-size: 1rem; line-height: 1.714285714;">See also </span><a style="font-size: 1rem; line-height: 1.714285714;" href="https://github.com/dartist/dart-upstart">dart-upstart</a><span style="font-size: 1rem; line-height: 1.714285714;"> on GitHub, and feel free to <a href="https://news.ycombinator.com/item?id=7578395">discuss on HN</a>.</span></p>
