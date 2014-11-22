@@ -39,20 +39,7 @@ author:
 <p>Anyways - should you choose to actually use an ORM on top of your relational store, you've just introduced an additional layer of abstraction (what did Joel <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">say</a> about those again?). If you're going down the no-ORM route on the other hand, you're likely to fiddle with raw strings in your code at some point, which can get messy. And, even if your language is statically typed, the compiler won't type-check anything for you.</p>
 <p>In the .NET world,  <a href="https://github.com/Mpdreamz">@Mpdreamz</a>' excellent <a href="http://nest.azurewebsites.net">NEST</a> library is what I would consider the equivalent of an ORM, with similar pros (static type checking, code completion) and cons. If you want to go no-ORM here to avoid the extra layer of abstraction, you still won't have to fiddle with raw query strings, ever - thanks to the fact that the query DSL is JSON-based, serializing anonymous classes does the job for you:</p>
 {% highlight ruby %} 
- var page = 1;
- var pageSize = 10;
- var searchText = "banana";
- var queryObject = new
-      {
-        from = (page - 1) * pageSize,
-        size = pageSize,
-        query = new
-        {
-          query_string = new { query = searchText }
-        }
-      };
-
- var queryString = JsonConvert.SerializeObject(queryObject); // JSON.NET
+  test
 {% endhighlight %}
 <p>Case in point: last week, I rewrote a fairly complex search query. It's the one that finds companies (more precisely, <a href="http://careers.stackoverflow.com/products/company-pages">company pages</a>) if you hit up search on <a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a>:</p>
 <p><a href="http://maxhorstmann.net/wp-content/uploads/2014/05/search.png"><img class="alignnone size-full wp-image-483" src="assets/search.png" alt="search" width="837" height="171" /></a></p>
