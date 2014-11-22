@@ -42,18 +42,6 @@ author:
  var page = 1;
  var pageSize = 10;
  var searchText = "banana";
- var queryObject = new
-      {
-        from = (page - 1) * pageSize,
-        size = pageSize,
-        query = new
-        {
-          query_string = new { query = searchText }
-        }
-      };
-
- var queryString = JsonConvert.SerializeObject(queryObject); // JSON.NET
-
 {% endhighlight %}
 <p>Case in point: last week, I rewrote a fairly complex search query. It's the one that finds companies (more precisely, <a href="http://careers.stackoverflow.com/products/company-pages">company pages</a>) if you hit up search on <a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a>:</p>
 <p><a href="http://maxhorstmann.net/wp-content/uploads/2014/05/search.png"><img class="alignnone size-full wp-image-483" src="assets/search.png" alt="search" width="837" height="171" /></a></p>
