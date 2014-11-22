@@ -6,7 +6,7 @@ layout: default
   {% for post in site.posts %}
     <article class="post">    
      <div class="date">
-        {{ page.date | date: "%B %e, %Y" }}
+         {{ post.date | date: "%B %e, %Y" }}<br/>
          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
      </div>
 
