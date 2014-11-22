@@ -38,7 +38,7 @@ author:
 <p>Going back to SQL and relational databases for a second. As a developer, one of the design choices you might still have to make is whether or not to use an object-relational mapper (ORM). Yes, it's been 10 years since ORMs have famously been called <a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">The Vietnam of Computer Science</a>, and yes, we live in NoSQL times (in fact, Elasticsearch itself supposedly makes an excellent NoSQL data store now). Meanwhile in the real world (ya know, enterprises and such), relational databases and ORMs are alive and doing well.</p>
 <p>Anyways - should you choose to actually use an ORM on top of your relational store, you've just introduced an additional layer of abstraction (what did Joel <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">say</a> about those again?). If you're going down the no-ORM route on the other hand, you're likely to fiddle with raw strings in your code at some point, which can get messy. And, even if your language is statically typed, the compiler won't type-check anything for you.</p>
 <p>In the .NET world,  <a href="https://github.com/Mpdreamz">@Mpdreamz</a>' excellent <a href="http://nest.azurewebsites.net">NEST</a> library is what I would consider the equivalent of an ORM, with similar pros (static type checking, code completion) and cons. If you want to go no-ORM here to avoid the extra layer of abstraction, you still won't have to fiddle with raw query strings, ever - thanks to the fact that the query DSL is JSON-based, serializing anonymous classes does the job for you:</p>
-{% highlight c lineos %} 
+{% highlight c# lineos %} 
 {% raw %}
 var page = 1;
 var pageSize = 10;
