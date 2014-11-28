@@ -54,7 +54,11 @@ Stream<integer> evenNumbers = numbers.stream().filter(m -> m%2 == 0);
 {% endhighlight %}
 <p>You'll notice a few small differences: Java still doesn't have implicit typing and won't allow you using the <strong>var </strong>keyword. So <em>you</em> will have to figure out the return type of an expression, the compiler won't do it for you. Also, you'll notice <strong>stream()</strong> - you can now <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#filter-java.util.function.Predicate-">filter</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#map-java.util.function.Function-">map</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#sorted--">sort</a>, basically do all the good stuff C# developers already know from LINQ to Objects. Not all of the operators are defined on the various collection classes directly though, but on <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html">Stream</a>.</p>
 <p><em>Some</em> operators have been added directly to the collection classes though. For example, <strong>sort</strong> (which makes sense, you wouldn't wanna "sort" a stream):</p>
-<pre lang="Java">numbers.sort((x, y) -> Integer.compare(x, y));</pre>
+{% highlight java %} 
+{% raw %}
+numbers.sort((x, y) -> Integer.compare(x, y));
+{% endraw %}
+{% endhighlight %}
 <p>So, did <strong>.sort</strong> get added to the existing List&lt;T&gt;? Or did Java 8 also introduce extension methods like in .NET did, like, 10 years ago?</p>
 <p>It's actually neither. Specifically to support Lamdas, Java 8 also introduces <a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html"><em>default methods</em></a>, also known as <em>defender methods</em> or (confusingly, at least for .NET programmers) <em>virtual extension methods</em>. In a nutshell, default methods allow for providing a default method implementation <strong>on an interface</strong> (!). Yes, you read this right. An interface which contains implementation. While this sounds akward, it's sort of an elegant way to add functionality to existing interfaces like List without breaking everyone's existing code.</p>
 <p>By the way, Eclipse annotates default methods for you:</p>
