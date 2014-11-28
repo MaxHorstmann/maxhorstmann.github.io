@@ -6,9 +6,8 @@ permalink: /about/
 
 Hi, I'm Max!
 
-I'm a full-stack software developer, and I work at [Stack Exchange](http://www.stackexchange.com).
+I'm a full-stack software developer, and I work at [Stack Exchange](http://www.stackexchange.com) in New York City.
 
-Visit my [Stack Overflow Careers](http://careers.stackoverflow.com/maxhorstmann) profile to see what I've been working on recently.
 
 
 
