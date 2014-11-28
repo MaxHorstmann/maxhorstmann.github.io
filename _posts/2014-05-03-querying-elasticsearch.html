@@ -39,7 +39,11 @@ author:
 {% endhighlight %}
 
 <p><a href="http://thedudeabides.com/about/">Kimchy</a> could have created a SQL-like query language for Elasticsearch, in which case the query above would probably look somewhat like this:</p>
-<pre lang="SQL" line="1">query (query_string = "banana") with from(0), size(10)</pre>
+{% highlight sql %} 
+{% raw %}
+query (query_string = "banana") with from(0), size(10)
+{% endraw %}
+{% endhighlight %}
 <p>Fortunately, he didn't. Let me explain why I think that was a particularly smart choice.</p>
 <!-- more -->
 <p>Going back to SQL and relational databases for a second. As a developer, one of the design choices you might still have to make is whether or not to use an object-relational mapper (ORM). Yes, it's been 10 years since ORMs have famously been called <a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">The Vietnam of Computer Science</a>, and yes, we live in NoSQL times (in fact, Elasticsearch itself supposedly makes an excellent NoSQL data store now). Meanwhile in the real world (ya know, enterprises and such), relational databases and ORMs are alive and doing well.</p>
