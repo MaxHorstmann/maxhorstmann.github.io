@@ -36,9 +36,14 @@ author:
 <blockquote class="twitter-tweet" lang="en"><p>83% of Java developers are excited about lambda expressions in Java 8. The remaining 17% are out buying their first color TV.</p>&mdash; Max Horstmann (@Max_Horstmann) <a href="https://twitter.com/Max_Horstmann/status/441232570940792832">March 5, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>Lambda expressions are a compact way to represent functions inline as expressions. If you're a C# developer like me, you've already been using them for years. For example, with <a href="http://msdn.microsoft.com/en-us/library/bb397919.aspx">LINQ to Objects</a>:</p>
-<pre lang="Java">var numbers = new List<int>() {1, 5, 10, 12, 13, 17, 20, 22};
+
+{% highlight java %} 
+{% raw %}
+var numbers = new List<int>() {1, 5, 10, 12, 13, 17, 20, 22};
 var evenNumbers = numbers.Where(m => m%2 == 0);
-</int></pre>
+{% endraw %}
+{% endhighlight %}
+
 <p>The <strong>.Where</strong> filter function isn't defined by <a href="http://msdn.microsoft.com/en-us/library/6sh2ey19(v=vs.110).aspx">List&lt;T&gt;</a> itself by the way, it's an <a href="http://msdn.microsoft.com/en-us/library/bb383977.aspx">extension method</a> defined by System.Linq.Enumerable. Look at its <a href="http://referencesource.microsoft.com/#System.Core/System/Linq/Enumerable.cs">source code</a> (yay, great move Microsoft!) and you'll see that its implementation contains no magic: it's simply iterating over the entire collection, returning elements for which the predicate is true (<a href="http://referencesource.microsoft.com/#System.Core/System/Linq/Enumerable.cs#140">here</a>).</p>
 <p>Here's the same code snippet in Java 8:</p>
 <pre lang="Java">
