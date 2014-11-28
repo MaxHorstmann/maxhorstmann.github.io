@@ -26,7 +26,9 @@ author:
 2. How can I set up continuous integration?</p>
 <p><strong>Keep Yourself Alive - Keep Yourself Aliii-hiive ...</strong></p>
 <p>Let's say you wrote a social networking web site in Dart, like this:</p>
-<pre lang="java" line="1">
+
+{% highlight dart %} 
+{% raw %}
  import 'dart:io';
  import 'dart:math';
  void main() {
@@ -40,6 +42,9 @@ author:
              You have $n friends.</body></html>");
          request.response.close();
  });});}</pre>
+{% endraw %}
+{% endhighlight %}
+
 <p>Done! Now let's quickly copy the file to your server and spawn a new Dart process:</p>
 <pre>$ dart social.dart</pre>
 <p>Your site is live and millions of users have started flocking towards it... until your hosting provider decides to reboot your server and you'll have to restart the process manually. Or, until an uncaught exception kills your Dart process.</p>
@@ -89,6 +94,6 @@ void main() {
  });});}</pre>
 <p>Latest version of webhook.dart is <a href="https://github.com/dartist/dart-upstart/blob/master/webhook.dart">here</a>.</p>
 <p><span style="font-size: 1rem; line-height: 1.714285714;">Lastly - add the web hook to your repository and make sure it gets triggered on every check-in. For example, in GitHub:</span></p>
-<p><a href="http://maxhorstmann.net/wp-content/uploads/2014/04/webhook.png"><img class="alignnone size-full wp-image-430" alt="webhook" src="assets/webhook.png" width="933" height="497" /></a></p>
+<p><img class="alignnone size-full wp-image-430" alt="webhook" src="images/webhook.png" width="933" height="497" /></p>
 <p>Nothing fancy - no security, no notifications, no build dependencies etc, but took only a few minutes to set up. Now write some server-side Dart code and push it out!</p>
 <p><span style="font-size: 1rem; line-height: 1.714285714;">See also </span><a style="font-size: 1rem; line-height: 1.714285714;" href="https://github.com/dartist/dart-upstart">dart-upstart</a><span style="font-size: 1rem; line-height: 1.714285714;"> on GitHub, and feel free to <a href="https://news.ycombinator.com/item?id=7578395">discuss on HN</a>.</span></p>
