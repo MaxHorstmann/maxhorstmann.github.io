@@ -11,5 +11,5 @@ I'm a full-stack web developer, and I work at [Stack Exchange](http://www.stacke
 
 
 
-Made with [Jekyll](http://jekyllrb.com) and hosted on [GitHub Pages](https://pages.github.com).
+Made with [Jekyll](http://jekyllrb.com), theme based on [jekyll-now](https://github.com/barryclark/jekyll-now) by [barryclark](https://github.com/barryclark). Hosted on [GitHub Pages](https://pages.github.com). 
 
