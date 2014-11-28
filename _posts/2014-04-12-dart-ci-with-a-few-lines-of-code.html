@@ -71,7 +71,8 @@ cd /opt/social/
 pub get
 start social</pre>
 <p><span style="line-height: 1.714285714; font-size: 1rem;">Second, set up a web hook endpoint on your production server, listening on some obscure port and triggering the deployment script on every POST. Of course, the web hook endpoint is also written in Dart:</span></p>
-<pre lang="java" line="1">
+{% highlight dart %} 
+{% raw %}
 import 'dart:io';
 import 'dart:convert';
 void main() {
@@ -91,9 +92,11 @@ void main() {
              });
            });
          }
- });});}</pre>
+ });});}
+{% endraw %}
+{% endhighlight %}
 <p>Latest version of webhook.dart is <a href="https://github.com/dartist/dart-upstart/blob/master/webhook.dart">here</a>.</p>
 <p><span style="font-size: 1rem; line-height: 1.714285714;">Lastly - add the web hook to your repository and make sure it gets triggered on every check-in. For example, in GitHub:</span></p>
-<p><img class="alignnone size-full wp-image-430" alt="webhook" src="images/webhook.png" width="933" height="497" /></p>
+<p><img class="alignnone size-full wp-image-430" alt="webhook" src="/images/webhook.png" width="933" height="497" /></p>
 <p>Nothing fancy - no security, no notifications, no build dependencies etc, but took only a few minutes to set up. Now write some server-side Dart code and push it out!</p>
 <p><span style="font-size: 1rem; line-height: 1.714285714;">See also </span><a style="font-size: 1rem; line-height: 1.714285714;" href="https://github.com/dartist/dart-upstart">dart-upstart</a><span style="font-size: 1rem; line-height: 1.714285714;"> on GitHub, and feel free to <a href="https://news.ycombinator.com/item?id=7578395">discuss on HN</a>.</span></p>
