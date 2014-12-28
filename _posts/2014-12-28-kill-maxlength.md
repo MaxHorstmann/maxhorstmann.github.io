@@ -9,7 +9,7 @@ tags: []
 If you're still looking for a New Year's resolution, here's a suggestion: 
 
 Go over all your UI code now, and whenever you see something like this...
-
+<!-- more -->
 {% highlight html %} 
 {% raw %}
 <input id="credit-card-number" maxlength="16">
