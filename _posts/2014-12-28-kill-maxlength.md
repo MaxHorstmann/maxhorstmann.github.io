@@ -31,5 +31,7 @@ Come on, this is 2015. Just do it.
 Happy New Year!
 
 
+Discuss on [Hacker News](http://news.ycombinator.com)
+
 
 
