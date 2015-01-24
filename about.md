@@ -4,9 +4,14 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Max - thanks for stopping by!
+Hi, I'm Max. I'm a software developer.
 
-I'm a full-stack web developer, and I work at [Stack Exchange](http://www.stackexchange.com) in New York City.
+Occasionally, I share my thoughts on programming, technology, startups, and career right here on my blog.
+
+I live in New York City and work at [Stack Exchange](http://www.stackexchange.com), the makers of [Stack Overflow](http://www.stackoverflow.com) and [Stack Overflow Careers](http://careers.stackoverflow.com), as a full-stack web developer.
+
+If you would like to send me a note, I'm [Max_Horstmann](https://twitter.com/Max_Horstmann) on Twitter.
+
 
 <br><br><br>
 
