@@ -19,13 +19,18 @@ author:
   last_name: ''
 ---
 <p>As a C# developer, I use <a href="http://msdn.microsoft.com/en-us/library/bb384054.aspx">auto-implemented properties</a> all the time, typically to create <a href="http://en.wikipedia.org/wiki/Plain_Old_CLR_Object">POCOs</a>:</p>
-<pre>class Customer
+{% highlight C# %} 
+{% raw %}
+class Customer
 {
   public string FirstName { get; set; }
   public string LastName { get; set; }
   public string City { get; set; }
   public DateTime Created { get; set; }
-}</pre>
+}
+{% endraw %}
+{% endhighlight %}
+
 <p>The compiler will generate an invisible (well, sort of) private member field for each property, which can only be accessed through the getters and setters. Why is it a good practice not just make the member field public, by the way? Because we might wanna add some validation logic later, and changing it from a member field to a property will require recompilation on the caller side. Which is in particular inconvenient if the binaries have been shipped. Also, subclasses can override properties and add logic to them - in C#, it's not possible to override a member field with a property.</p>
 <p>Now, let's write the POCO in Dart (which I guess makes it a <em>PODO</em>):</p>
 <pre>class Customer
