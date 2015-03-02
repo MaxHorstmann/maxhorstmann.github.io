@@ -33,13 +33,19 @@ class Customer
 
 <p>The compiler will generate an invisible (well, sort of) private member field for each property, which can only be accessed through the getters and setters. Why is it a good practice not just make the member field public, by the way? Because we might wanna add some validation logic later, and changing it from a member field to a property will require recompilation on the caller side. Which is in particular inconvenient if the binaries have been shipped. Also, subclasses can override properties and add logic to them - in C#, it's not possible to override a member field with a property.</p>
 <p>Now, let's write the POCO in Dart (which I guess makes it a <em>PODO</em>):</p>
-<pre>class Customer
+
+{% highlight dart %} 
+{% raw %}
+class Customer
 {
   String FirstName;
   String LastName;
   String City;
   DateTime Created;
-}</pre>
+}
+{% endraw %}
+{% endhighlight %}
+
 <p>As simple as it gets. One thing you'll notice is that there is no <em>public</em> access modifier. That's because in Dart, <em>there are no access modifiers</em>: if a member attribute starts with an underscore, it's private (to its library). Otherwise, it's public. I think that's great! Typically, programmers use the underscore notation (or a similar prefix such as m_) by convention anyways. So, having an access modified <em>and</em> the prefix is kind of redundant.</p>
 <p><span style="line-height:1.714285714;font-size:1rem;">Also, unlike in the C# version, nothing appears to tell the compiler to wrap those attributes in auto-generated getters and setters. That's because the Dart compiler </span><em style="line-height:1.714285714;font-size:1rem;">always</em><span style="line-height:1.714285714;font-size:1rem;"> implicitly generates them (except for setters on </span><em style="line-height:1.714285714;font-size:1rem;">final</em><span style="line-height:1.714285714;font-size:1rem;"> attributes)! Well, as an optimization, it might not </span><em style="line-height:1.714285714;font-size:1rem;">really</em><span style="line-height:1.714285714;font-size:1rem;"> do that although the Dart documentation </span><a style="line-height:1.714285714;font-size:1rem;" href="https://www.dartlang.org/docs/dart-up-and-running/contents/ch02.html#classes-getters-and-setters">does make that claim</a><span style="line-height:1.714285714;font-size:1rem;">. But the important part is that you can pretend that it does, and if you should choose to make the getters/setters explicit later (or override them in a subclass), you have a guarantee that nothing will break. For instance, here's how we might add some validation logic later and/or in a subclass:</span></p>
 <pre> String _firstName;
