@@ -13,7 +13,7 @@ published: true
 
 ACM held its inaugural two-day [Applicative conference](http://applicative.acm.org/) here in NYC. The premise of the conference was to bring together researchers and practitioners and consisted of two tracks, one on lower-level systems programming and another one on application development. <!-- more -->
 
-Some of the talks were interesting, see summaries below. I learned a few things and got some inspiration out of them. However, IMO the conference didn’t quite deliver on its main premise- I didn’t see any particular connection or recurring theme between the talks, nothing which would somehow connect the two worlds (research and engineering) or discuss how the two could work closer together, no interactive formats etc. So, I’m not sure yet if I’ll attend again next time, I’ll have a closer look at the format first. It was fun though.
+Some of the talks were interesting, see summaries below. I learned a few things and got some inspiration out of them. However, IMO the conference didn’t quite deliver on its main premise- I didn’t see any particular connection or recurring theme between the talks, nothing which would somehow connect the two worlds (research and engineering) or discuss how the two could work closer together, no interactive formats etc. So, I’m not sure yet if I’ll attend again next time, I’ll have a closer look at the format first. It was a lot of fun though overall.
 
 Here are my write-ups from some of the talks:
 
@@ -77,6 +77,6 @@ Supposedly, all client-side web apps at FB are implemented in Flux - messenger, 
 
 The talk also briefly touched on [Jest](http://facebook.github.io/flux/docs/testing-flux-applications.html), their testing framework for Flux/React, which is also pretty neat.
 
-
+<br><br>
 Discuss on [Hacker News](https://news.ycombinator.com/user?id=Max_Horstmann)
 
