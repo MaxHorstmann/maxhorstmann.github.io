@@ -73,10 +73,10 @@ The speaker was a dev at FB and author of some good SO answers, e.g. [here](http
 
 Flux is built on top of React and implements a data flow pattern, which is quite different from the classical MVC or MV* paradigm. Read [this](https://facebook.github.io/flux/docs/overview.html#content) overview if you’re interested in learning more, the main difference is that data always flows in a single direction originating from an "action", which then gets dispatched to a store which updates the (not necessarily but usually) React view.
 
-Supposedly, all client-side web apps at FB are implemented in Flux - messenger, notifications, likes/comments etc are all individual flux apps on a single page. He also mentioned that they’re usually able to teach React and Flux to new hires (including interns) within a day, after which they’re usually ready to ship new apps and features immediately while only having to write a few lines of code. At least from my experience, learning more heavyweight frameworks like Angular is more complex and takes longer than that, so this actually sounds pretty intriguing and I almost wanna try it out with our next hire. :)
+Supposedly, all client-side web apps at FB are implemented in Flux - messenger, notifications, likes/comments etc are all individual flux apps on a single page. He also mentioned that they’re usually able to teach React and Flux to new hires (including interns) within a day, after which they’re usually ready to ship new apps and features immediately while only having to write a few lines of code. At least from my experience, learning more heavyweight frameworks like Angular is more complex and takes longer than that, so this actually sounds pretty intriguing and I almost wanna try it out with our next hire here at Stack Exchange. :)
 
 The talk also briefly touched on [Jest](http://facebook.github.io/flux/docs/testing-flux-applications.html), their testing framework for Flux/React, which is also pretty neat.
 
 <br><br>
-Discuss on [Hacker News](https://news.ycombinator.com/user?id=Max_Horstmann)
+Discuss on [Hacker News](https://news.ycombinator.com/item?id=9153297)
 
