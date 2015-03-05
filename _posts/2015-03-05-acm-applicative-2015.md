@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'ACM Applicative Conference'
+title: 'ACM Applicative Conference 2015'
 date: 2015-03-05 
 categories:
 - Conferences
@@ -11,7 +11,7 @@ type: post
 published: true
 ---
 
-ACM held its inaugural two-day [Applicative conference](http://applicative.acm.org/) here in NYC. The premise of the conference was to bring together researchers and practitioners and consisted of two tracks, one on lower-level systems programming and another one on application development. 
+ACM held its inaugural two-day [Applicative conference](http://applicative.acm.org/) here in NYC. The premise of the conference was to bring together researchers and practitioners and consisted of two tracks, one on lower-level systems programming and another one on application development. <!-- more -->
 
 Some of the talks were interesting, see summaries below. I learned a few things and got some inspiration out of them. However, IMO the conference didn’t quite deliver on its main premise- I didn’t see any particular connection or recurring theme between the talks, nothing which would somehow connect the two worlds (research and engineering) or discuss how the two could work closer together, no interactive formats etc. So, I’m not sure yet if I’ll attend again next time, I’ll have a closer look at the format first. It was fun though.
 
