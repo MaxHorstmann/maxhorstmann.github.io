@@ -15,7 +15,7 @@ ACM held its inaugural two-day [Applicative conference](http://applicative.acm.o
 
 Some of the talks were interesting, see summaries below. I learned a few things and got some inspiration out of them. However, IMO the conference didn’t quite deliver on its main premise- I didn’t see any particular connection or recurring theme between the talks, nothing which would somehow connect the two worlds (research and engineering) or discuss how the two could work closer together, no interactive formats etc. So, I’m not sure yet if I’ll attend again next time, I’ll have a closer look at the format first. It was fun though.
 
-# Talks
+Here are my write-ups from some of the talks:
 
 ### [JSON Graph: Reactive REST at Netflix](http://applicative.acm.org/speaker-JafarHusain.html)
 
@@ -29,7 +29,7 @@ One particular issue is that Netflix’ domain model is a graph, not a tree (e.g
 
 Netflix is going to open-source implementations of both Falkor and JSONG [in the next couple of months](https://twitter.com/jhusain/status/572528802741395456).
 
-### **[Component-Driven** ](http://applicative.acm.org/speaker-TaylorSavage.html)[Web Development with Polymer](http://applicative.acm.org/speaker-TaylorSavage.html)
+### [Component-Driven Web Development with Polymer](http://applicative.acm.org/speaker-TaylorSavage.html)
 
 Tl;DR: might be interesting for you if you’re a web (UI) developer and aren’t familiar with web components yet.
 
@@ -43,7 +43,7 @@ TL;DR: webpack makes it easier to handle static assets and their dependencies.
 
 An intro to [webpack](http://webpack.github.io/), a static assets bundler similar to [browserify](http://browserify.org/), [RequireJS](http://requirejs.org/) or [ServiceStack Bundler](https://github.com/ServiceStack/Bundler) (which we used in the past but got rid of). Its particular strength is hot-loading changes. Have a look at their [tutorial](http://webpack.github.io/docs/tutorials/getting-started/) if you’re interested. The talk was basically a feature summary plus some live demos.
 
-### **[Scaling** ](http://applicative.acm.org/speaker-GroveMoore.html)[Dart from Mobile to Server](http://applicative.acm.org/speaker-GroveMoore.html)
+### [Scaling Dart from Mobile to Server](http://applicative.acm.org/speaker-GroveMoore.html)
 
 TL;DR: Dart is a cool language but you probably don’t wanna use it for anything serious.
 
@@ -55,7 +55,7 @@ However, IMO expecting it to be adopted widely in the future is a bit of a stret
 
 Still a nice language. Try it out when you can.
 
-### **[Systems** ](http://applicative.acm.org/speaker-BenMaurer.html)[at Facebook Scale](http://applicative.acm.org/speaker-BenMaurer.html)
+### [Systems at Facebook Scale](http://applicative.acm.org/speaker-BenMaurer.html)
 
 TL;DR: Facebook really is a whole bunch of independent services which will sometimes tell you that they’re too busy. They also have a structured process for outages and post-mortems.
 
@@ -65,7 +65,7 @@ Another interesting point was that they have scheduled production builds twice a
 
 Interesting talk!
 
-### **[Flux**:](http://applicative.acm.org/speaker-BillFisher.html)[ A Unidirectional Data Flow Architecture for React Apps](http://applicative.acm.org/speaker-BillFisher.html)
+### [Flux: A Unidirectional Data Flow Architecture for React Apps](http://applicative.acm.org/speaker-BillFisher.html)
 
 TL;DR Facebook’s [Flux](https://facebook.github.io/flux/) and [React](https://facebook.github.io/react/) combo has become a viable alternative to existing SPA frameworks such as Angular, in particular due to simplicity and faster rendering performance.
 
@@ -76,3 +76,7 @@ Flux is built on top of React and implements a data flow pattern, which is quite
 Supposedly, all client-side web apps at FB are implemented in Flux - messenger, notifications, likes/comments etc are all individual flux apps on a single page. He also mentioned that they’re usually able to teach React and Flux to new hires (including interns) within a day, after which they’re usually ready to ship new apps and features immediately while only having to write a few lines of code. At least from my experience, learning more heavyweight frameworks like Angular is more complex and takes longer than that, so this actually sounds pretty intriguing and I almost wanna try it out with our next hire. :)
 
 The talk also briefly touched on [Jest](http://facebook.github.io/flux/docs/testing-flux-applications.html), their testing framework for Flux/React, which is also pretty neat.
+
+
+Discuss on [Hacker News](https://news.ycombinator.com/user?id=Max_Horstmann)
+
