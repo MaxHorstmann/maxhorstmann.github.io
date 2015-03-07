@@ -31,4 +31,4 @@ Cheers,
 Joe
 
 
-Discuss on Hacker News
+[Discuss on Hacker News](https://news.ycombinator.com/)
