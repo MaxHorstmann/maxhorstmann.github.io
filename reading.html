@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<div class="readings">
+  {% for book in site.data.books %}
+
+    <div>{{ book.isbn }} ... {{ book.member}}</div>
+
+  {% endfor %}
+
+</div>
