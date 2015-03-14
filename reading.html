@@ -2,11 +2,39 @@
 layout: default
 ---
 
-<div class="readings">
+<h1>My reading list</h1>
+
+<div class="data">
   {% for book in site.data.books %}
-
-    <div>{{ book.isbn }} ... {{ book.tldr}}</div>
-
+     <div class="book-data" data-isbn="{{ book.isbn }}" data-tldr="{{ book.tldr}}"></div>
   {% endfor %}
-
 </div>
+
+<div class="ajax-loader">
+  <img src="/images/ajax-loader.gif"></img>
+</div>
+
+<div class="books"></div>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+  var bookList = $(".books");
+  $(".book-data").each(function() {
+    var isbn = $(this).attr("data-isbn");
+    var tldr = $(this).attr("data-tldr");
+    var booksApiUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
+    $.ajax({
+      url: booksApiUrl
+    }).done(function(json) {
+      var title = json.items[0].volumeInfo.title;
+      var img = json.items[0].volumeInfo.imageLinks.smallThumbnail;
+      bookList.append("<li><img src="+img+">" + title +"<br>TL;DR:"+tldr+"</li>");
+    });
+    
+  });
+  setTimeout(function() {
+    $(".ajax-loader").hide();
+  });
+
+
+</script>

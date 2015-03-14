@@ -7,27 +7,29 @@ categories:
 type: post
 published: false
 ---
+An interesting question I've heard a few times in one or the other variation is:
 
-If you're a developer, chances are you're getting contacted by recruiters. 
+"What makes a good recruiter email to a developer which is likely to get a response?"
 
-Here's a fictitious recruiter email *I* would definitly respond to:
+Well, not all developers are the same, but let me try to provide an answer by writing
+what would be a perfect recruiter email to *me* (and certainly get a response). 
+
+
+
+Here it is:
 
 <!-- more -->
 
 Subject: Your blog post on partially compiled algorithms
 
->Hi Max,
->
->We have a small engineering team here at Dronebotify, we're building bots to automatically schedule drone deliveries to cruise ships. 
->
->The big challenge we're facing is how to create collision-free flight plans for a large fleet of drones, and our current implementation relies heavily on partially compiled algorithms for that.
->
-We were pretty excited about your blog post on Hacker News today, in particular about the delivery time improvements 
-you saw when switching to alpha/beta queues in your optimizer. 
+Hi Max,
 
-Would you be interested in chatting with us? We'd love to get to know you.
+We saw your blog post on partially compiled algorithms on Hacker News today and really enjoyed reading it. In particular the performance improvements you achieved by switching to alpha/beta queues in your optimizer look very impressive.
 
-Cheers,
+We're a a small engineering team here at Dronebotify. In case you haven't heard of us, we're building bots to automatically schedule drone deliveries to cruise ships. We're using  algorithms to generate collision-free delivery schedules, and some of the ideas in your blog post could possibly be useful for us.
+
+Would you be interested in 
+
 Joe
 
 
