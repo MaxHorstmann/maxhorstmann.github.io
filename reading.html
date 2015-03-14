@@ -4,17 +4,22 @@ layout: default
 
 <h1>My reading list</h1>
 
+<div>
+  <table class="books"></table>
+</div>
+
 <div class="data">
-  {% for book in site.data.books %}
-     <div class="book-data" data-isbn="{{ book.isbn }}" data-tldr="{{ book.tldr}}"></div>
-  {% endfor %}
+  <table>
+      {% for book in site.data.books %}
+        <tr class="book-data" data-isbn="{{ book.isbn }}" data-tldr="{{ book.tldr}}">
+          <td class="book-thumbnail"><img src="/images/ajax-loader.gif"></td>
+          <td class="book-title"></td>
+          <td class="book-tldr"></td>
+        </tr>
+      {% endfor %}
+  </table>
 </div>
-
-<div class="ajax-loader">
-  <img src="/images/ajax-loader.gif"></img>
-</div>
-
-<div class="books"></div>
+More coming soon...
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
@@ -27,14 +32,12 @@ layout: default
       url: booksApiUrl
     }).done(function(json) {
       var title = json.items[0].volumeInfo.title;
+      var subtitle = json.items[0].volumeInfo.subtitle;
       var img = json.items[0].volumeInfo.imageLinks.smallThumbnail;
-      bookList.append("<li><img src="+img+">" + title +"<br>TL;DR:"+tldr+"</li>");
+      console.log(title);
+      //bookList.append("<tr><td><img src="+img+"></td><td>"+ title + " "+subtitle+"</td><td>"+tldr+"<td></tr>");
     });
     
   });
-  setTimeout(function() {
-    $(".ajax-loader").hide();
-  });
-
 
 </script>
