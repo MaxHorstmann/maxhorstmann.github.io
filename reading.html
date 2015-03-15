@@ -5,39 +5,17 @@ layout: default
 <h1>My reading list</h1>
 
 <div>
-  <table class="books"></table>
-</div>
-
-<div class="data">
   <table>
       {% for book in site.data.books %}
-        <tr class="book-data" data-isbn="{{ book.isbn }}" data-tldr="{{ book.tldr}}">
-          <td class="book-thumbnail"><img src="/images/ajax-loader.gif"></td>
-          <td class="book-title"></td>
-          <td class="book-tldr"></td>
-        </tr>
+      <tr>
+        <td style="vertical-align:top"><a href="{{book.items[0].accessInfo.webReaderLink}}"><img src="{{book.items[0].volumeInfo.imageLinks.smallThumbnail}}"</a></td>
+        <td>
+          <div style="font-weight: bold">{{book.items[0].volumeInfo.title}}</div>
+          <div>{{book.items[0].volumeInfo.subtitle}}</div>
+          <div style="margin-top: 10px;font-style:italic">{{book.items[0].volumeInfo.authors}}</div>
+        </td>
+        <td>{{book.tldr}}</td>
+      </tr>
       {% endfor %}
   </table>
 </div>
-More coming soon...
-
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script type="text/javascript">
-  var bookList = $(".books");
-  $(".book-data").each(function() {
-    var isbn = $(this).attr("data-isbn");
-    var tldr = $(this).attr("data-tldr");
-    var booksApiUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
-    $.ajax({
-      url: booksApiUrl
-    }).done(function(json) {
-      var title = json.items[0].volumeInfo.title;
-      var subtitle = json.items[0].volumeInfo.subtitle;
-      var img = json.items[0].volumeInfo.imageLinks.smallThumbnail;
-      console.log(title);
-      //bookList.append("<tr><td><img src="+img+"></td><td>"+ title + " "+subtitle+"</td><td>"+tldr+"<td></tr>");
-    });
-    
-  });
-
-</script>
