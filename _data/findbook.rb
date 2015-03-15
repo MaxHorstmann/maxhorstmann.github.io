@@ -1,19 +1,29 @@
 require 'open-uri'
 require 'json'
+require "csv"
 
-isbn = ARGV[0]
+puts "["
+first = false;
+CSV.foreach("isbn.csv") do |row|
+    isbn = row[0]
+    tldr = row[1]
 
-if (isbn.to_s == '') 
-    puts "usage: ruby findbook.rb <isbn>" 
-else
     url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
     json = open(url, 'Accept-Encoding' => '').read
-    volumeInfo = JSON.parse(json)["items"][0]["volumeInfo"];
-    title = volumeInfo["title"] 
-    subtitle = volumeInfo["subtitle"] 
-    authors = volumeInfo["authors"].join()
-    thumbnail = volumeInfo["imageLinks"]["smallThumbnail"] 
-    puts "\"#{title}\";\"#{subtitle}\";\"#{authors}\";\"#{thumbnail}\""
+    if first then
+        first = false
+    else
+        puts ","
+    end
+    puts json
+    #volumeInfo = JSON.parse(json)["items"][0]["volumeInfo"];
+    #title = volumeInfo["title"] 
+    #subtitle = volumeInfo["subtitle"] 
+    #authors = volumeInfo["authors"].join()
+    #thumbnail = volumeInfo["imageLinks"]["smallThumbnail"] 
+    #puts "\"#{title}\";\"#{subtitle}\";\"#{authors}\";\"#{thumbnail}\""
+
 end
 
+puts "]"
 
