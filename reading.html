@@ -3,24 +3,14 @@ layout: default
 ---
 
 <h1>My Reading List</h1>
-
 <div>
-
   {% for book in site.data.books %}
-    <a href="{{book.items[0].accessInfo.webReaderLink}}"><img src="{{book.items[0].volumeInfo.imageLinks.thumbnail}}"></img></a>
+    <a class="img-thumb" href="{{book.items[0].accessInfo.webReaderLink}}"><img src="{{book.items[0].volumeInfo.imageLinks.thumbnail}}"></a>
+    <span class="img-details">
+      <div>({{book.group}})</div>
+      <div style="font-weight: bold">{{book.items[0].volumeInfo.title}}</div>
+      <div>{{book.items[0].volumeInfo.subtitle}}</div>
+      <div style="margin-top: 10px;font-style:italic">{{book.items[0].volumeInfo.authors[0]}}</div>
+    </span>
   {% endfor %}
-
-  <table style="padding: 15px">
-      {% for book in site.data.books %}
-      <tr>
-        <td style="vertical-align:top;padding:10px"><a href="{{book.items[0].accessInfo.webReaderLink}}"><img src="{{book.items[0].volumeInfo.imageLinks.smallThumbnail}}"</a></td>
-        <td style="padding:10px">
-          <div style="font-weight: bold">{{book.items[0].volumeInfo.title}}</div>
-          <div>{{book.items[0].volumeInfo.subtitle}}</div>
-          <div style="margin-top: 10px;font-style:italic">{{book.items[0].volumeInfo.authors[0]}}</div>
-        </td>
-        <td style="padding:10px">{{book.tldr}}</td>
-      </tr>
-      {% endfor %}
-  </table>
 </div>
