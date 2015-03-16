@@ -5,6 +5,11 @@ layout: default
 <h1>My reading list</h1>
 
 <div>
+
+  {% for book in site.data.books %}
+    <a href="{{book.items[0].accessInfo.webReaderLink}}"><img src="{{book.items[0].volumeInfo.imageLinks.thumbnail}}"></img></a>
+  {% endfor %}
+
   <table style="padding: 15px">
       {% for book in site.data.books %}
       <tr>
