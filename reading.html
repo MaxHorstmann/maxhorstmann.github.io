@@ -11,6 +11,8 @@ layout: default
       <div style="font-weight: bold">{{book.items[0].volumeInfo.title}}</div>
       <div>{{book.items[0].volumeInfo.subtitle}}</div>
       <div style="margin-top: 10px;font-style:italic">{{book.items[0].volumeInfo.authors[0]}}</div>
+      <div style="margin-top: 20px;font-style:italic">Key learnings: {{book.tldr}}</div>
+
     </span>
   {% endfor %}
 </div>
