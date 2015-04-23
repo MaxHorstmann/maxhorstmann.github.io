@@ -1,13 +1,12 @@
 <html ng-app="app">
 <body ng-controller="controller">
 
-    <div ng-show="initializing">initializing...</div>
-    <button ng-click="login()" ng-hide="initializing">log in</button>
+    <button ng-click="login()">log in</button>
 
     <div>{{ auth.accessToken }}</div>
     <div>{{ auth.expirationDate }}</div>
 
-    
+
 
 
     <script typen='text/javascript' src='https://api.stackexchange.com/js/2.0/all.js'></script>

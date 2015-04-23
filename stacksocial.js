@@ -26,14 +26,12 @@ app.controller('controller', ['$scope', function($scope) {
 
     $scope.initializing = true;
 
-
     $scope.init = function() {
         SE.init({
             clientId: 4686,
             key: 'Jn1HoRLSkS1IMtHxX0Tw0A((',
             channelUrl: 'http://maxhorstmann.net/blank',
             complete: function (data) { 
-                console.log(data);
                 $scope.initializing = false;
             }
         });
