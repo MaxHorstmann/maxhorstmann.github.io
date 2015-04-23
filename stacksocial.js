@@ -23,17 +23,23 @@ app.controller('controller', ['$scope', function($scope) {
             error: function(data) { alert('error'); },
             networkUsers: true });
     };
-    
+
     $scope.initializing = true;
 
-    SE.init({
-        clientId: 4686,
-        key: 'Jn1HoRLSkS1IMtHxX0Tw0A((',
-        channelUrl: 'http://maxhorstmann.net/blank',
-        complete: function (data) { 
-            $scope.initializing = false;
-        }
-    });
+    $scope.init = function() {
+        SE.init({
+            clientId: 4686,
+            key: 'Jn1HoRLSkS1IMtHxX0Tw0A((',
+            channelUrl: 'http://maxhorstmann.net/blank',
+            complete: function (data) { 
+                $scope.initializing = false;
+            }
+        });
+
+    };
+
+    $scope.init();
+    
 
 
 }]);
