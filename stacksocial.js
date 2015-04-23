@@ -15,6 +15,7 @@ var app = angular.module('app', []);
 app.controller('controller', ['$scope', function($scope) {
 
     $scope.apiRoot = 'https://api.stackexchange.com/2.2';
+    $scope.key = 'Jn1HoRLSkS1IMtHxX0Tw0A((';
 
     $scope.login = function() {
         SE.authenticate({
@@ -34,7 +35,7 @@ app.controller('controller', ['$scope', function($scope) {
     $scope.init = function() {
         SE.init({
             clientId: 4686,
-            key: 'Jn1HoRLSkS1IMtHxX0Tw0A((',
+            key: $scope.key,
             channelUrl: 'http://maxhorstmann.net/blank',
             complete: function (data) { 
                 $scope.initializing = false;
@@ -44,7 +45,7 @@ app.controller('controller', ['$scope', function($scope) {
     };
 
     $scope.whoami = function() {
-        var url = $scope.apiRoot + "/me?order=desc&sort=reputation&site=stackoverflow&accessToken=" + $scope.auth.accessToken;
+        var url = $scope.apiRoot + "/me?order=desc&sort=reputation&site=stackoverflow&key=" + $scope.key +"access_token=" + $scope.auth.accessToken;
         console.log(url);
     }
 
