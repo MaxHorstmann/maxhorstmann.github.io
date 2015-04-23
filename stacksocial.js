@@ -51,6 +51,7 @@ app.controller('controller', ['$scope', '$http', function($scope, $http) {
         $http.get(url).
           success(function(data, status, headers, config) {
             console.log(data);
+            $scope.displayname = data.items[0].display_name;
           }).
           error(function(data, status, headers, config) {
             alert('error');
