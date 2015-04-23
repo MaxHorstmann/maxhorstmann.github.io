@@ -17,8 +17,7 @@ app.controller('controller', ['$scope', function($scope) {
     $scope.login = function() {
         SE.authenticate({
             success: function(data) { 
-                alert('success'); 
-                console.log(data);
+                $scope.auth = data;
             },
             error: function(data) { alert('error'); },
             networkUsers: true 
@@ -26,16 +25,14 @@ app.controller('controller', ['$scope', function($scope) {
     };
 
     $scope.initializing = true;
-    $scope.test = 0;
+
 
     $scope.init = function() {
-        console.log("init...");
         SE.init({
             clientId: 4686,
             key: 'Jn1HoRLSkS1IMtHxX0Tw0A((',
             channelUrl: 'http://maxhorstmann.net/blank',
             complete: function (data) { 
-                console.log("complete");
                 $scope.initializing = false;
             }
         });
