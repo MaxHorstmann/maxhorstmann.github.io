@@ -9,6 +9,6 @@ function login() {
     SE.authenticate({
         success: function(data) { alert('success'); },
         error: function(data) { alert('error'); },
-        networkUsers: true
-
+        networkUsers: true });
+    
 }    
