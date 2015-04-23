@@ -12,7 +12,7 @@ var app = angular.module('app', []);
 // }]);
 
 //app.controller('controller', ['$scope', 'firebaseConnection', function($scope, firebaseConnection) {
-app.controller('controller', ['$scope', function($scope) {
+app.controller('controller', ['$scope', '$http', function($scope, $http) {
 
     $scope.apiRoot = 'https://api.stackexchange.com/2.2';
     $scope.key = 'Jn1HoRLSkS1IMtHxX0Tw0A((';
@@ -45,9 +45,17 @@ app.controller('controller', ['$scope', function($scope) {
     };
 
     $scope.whoami = function() {
-        var url = $scope.apiRoot + "/me?order=desc&sort=reputation&site=stackoverflow&key=" + $scope.key +"access_token=" + $scope.auth.accessToken;
-        console.log(url);
-    }
+        var url = $scope.apiRoot + "/me?order=desc&sort=reputation&site=stackoverflow&key=" 
+                + $scope.key +"&access_token=" + $scope.auth.accessToken;
+
+        $http.get(url).
+          success(function(data, status, headers, config) {
+            console.log(data);
+          }).
+          error(function(data, status, headers, config) {
+            alert('error');
+          });
+        }
 
     $scope.init();
 }]);
