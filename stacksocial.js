@@ -21,7 +21,8 @@ app.controller('controller', ['$scope', function($scope) {
                 console.log(data);
             },
             error: function(data) { alert('error'); },
-            networkUsers: true });
+            networkUsers: true 
+        });
     };
 
     $scope.initializing = true;
@@ -33,16 +34,12 @@ app.controller('controller', ['$scope', function($scope) {
             key: 'Jn1HoRLSkS1IMtHxX0Tw0A((',
             channelUrl: 'http://maxhorstmann.net/blank',
             complete: function (data) { 
+                console.log("complete");
                 $scope.initializing = false;
             }
         });
-
     };
-
     $scope.init();
-
-
-
 }]);
 
 
