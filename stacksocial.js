@@ -26,6 +26,7 @@ app.controller('controller', ['$scope', function($scope) {
     };
 
     $scope.initializing = true;
+    $scope.test = 0;
 
     $scope.init = function() {
         console.log("init...");
