@@ -1,18 +1,16 @@
-//var app = angular.module('app', ['firebase']);
-var app = angular.module('app', []);
+var app = angular.module('app', ['firebase']);
 
-// app.factory('firebaseConnection', ['$firebase', function($firebase) {
-//     var firebase_url = document.getElementById('data-firebase-url').getAttribute('data-firebase-url');
-//     var firebaseRef = new Firebase(firebase_url);
-//     return { 
-//       firebase_url : firebase_url, 
-//       firebaseRef : firebaseRef,
-//       user : {}
-//     };
-// }]);
+app.factory('firebaseConnection', ['$firebase', function($firebase) {
+    var firebase_url = 'https://stacktrack.firebaseio.com';
+    var firebaseRef = new Firebase(firebase_url);
+    return { 
+      firebase_url : firebase_url, 
+      firebaseRef : firebaseRef,
+      user : {}
+    };
+}]);
 
-//app.controller('controller', ['$scope', 'firebaseConnection', function($scope, firebaseConnection) {
-app.controller('controller', ['$scope', '$http', function($scope, $http) {
+app.controller('controller', ['$scope', 'firebaseConnection', '$http', function($scope, firebaseConnection, $http) {
 
     $scope.apiRoot = 'https://api.stackexchange.com/2.2';
     $scope.key = 'Jn1HoRLSkS1IMtHxX0Tw0A((';
@@ -42,6 +40,9 @@ app.controller('controller', ['$scope', '$http', function($scope, $http) {
                 $scope.$apply();
             }
         });
+
+
+
     };
 
     $scope.whoami = function() {
@@ -51,7 +52,8 @@ app.controller('controller', ['$scope', '$http', function($scope, $http) {
         $http.get(url).
           success(function(data, status, headers, config) {
             console.log(data);
-            $scope.displayname = data.items[0].display_name;
+            $scope.user = data.items[0];
+            $scope.following = $firebase(new Firebase(firebaseConnection.firebase_url + '/' + $scope.user_id + '/following')).$asArray();
           }).
           error(function(data, status, headers, config) {
             alert('error');
