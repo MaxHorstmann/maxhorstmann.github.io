@@ -9,7 +9,10 @@ SE.init({
 
 function login() {
     SE.authenticate({
-        success: function(data) { alert('success'); },
+        success: function(data) { 
+            alert('success'); 
+            console.log(data);
+        },
         error: function(data) { alert('error'); },
         networkUsers: true });
 
