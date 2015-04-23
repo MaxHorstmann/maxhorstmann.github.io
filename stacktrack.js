@@ -53,7 +53,7 @@ app.controller('controller', ['$scope', '$http', '$firebaseArray', 'firebaseConn
           success(function(data, status, headers, config) {
             console.log(data);
             $scope.user = data.items[0];
-            var url = firebaseConnection.firebase_url + '/' + $scope.user_id + '/following';
+            var url = firebaseConnection.firebase_url + '/' + $scope.user.user_id + '/following';
             console.log(url);
             $scope.following = $firebaseArray(new Firebase(url));
           }).
