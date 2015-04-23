@@ -27,6 +27,7 @@ app.controller('controller', ['$scope', function($scope) {
     $scope.initializing = true;
 
     $scope.init = function() {
+        console.log("init...");
         SE.init({
             clientId: 4686,
             key: 'Jn1HoRLSkS1IMtHxX0Tw0A((',
@@ -39,7 +40,7 @@ app.controller('controller', ['$scope', function($scope) {
     };
 
     $scope.init();
-    
+
 
 
 }]);
