@@ -18,6 +18,7 @@ app.controller('controller', ['$scope', function($scope) {
         SE.authenticate({
             success: function(data) { 
                 $scope.auth = data;
+                $scope.$apply();
             },
             error: function(data) { alert('error'); },
             networkUsers: true 
@@ -36,6 +37,11 @@ app.controller('controller', ['$scope', function($scope) {
             }
         });
     };
+
+    $scope.whoami = function() {
+
+    }
+
     $scope.init();
 }]);
 
