@@ -14,11 +14,15 @@ var app = angular.module('app', []);
 //app.controller('controller', ['$scope', 'firebaseConnection', function($scope, firebaseConnection) {
 app.controller('controller', ['$scope', function($scope) {
 
+    $scope.apiRoot = 'https://api.stackexchange.com/2.2';
+
     $scope.login = function() {
         SE.authenticate({
             success: function(data) { 
                 $scope.auth = data;
                 $scope.$apply();
+
+                $scope.whoami();
             },
             error: function(data) { alert('error'); },
             networkUsers: true 
@@ -34,12 +38,14 @@ app.controller('controller', ['$scope', function($scope) {
             channelUrl: 'http://maxhorstmann.net/blank',
             complete: function (data) { 
                 $scope.initializing = false;
+                $scope.$apply();
             }
         });
     };
 
     $scope.whoami = function() {
-
+        var url = $scope.apiRoot + "/me?order=desc&sort=reputation&site=stackoverflow&accessToken=" + $scope.auth.accessToken;
+        console.log(url);
     }
 
     $scope.init();
