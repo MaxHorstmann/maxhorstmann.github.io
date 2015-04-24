@@ -56,6 +56,13 @@ app.controller('controller', ['$scope', '$http', '$firebaseArray', 'firebaseConn
             var url = firebaseConnection.firebase_url + '/' + $scope.user.user_id + '/following';
             console.log(url);
             $scope.following = $firebaseArray(new Firebase(url));
+
+            var timelineUrl = $scope.apiRoot + "/me/timeline?site=stackoverflow&key=" + $scope.key +"&access_token=" + $scope.auth.accessToken;
+            $http.get(timelineUrl).
+              success(function(data, status, headers, config) {
+                console.log(data);
+              });
+
           }).
           error(function(data, status, headers, config) {
             alert('error');
