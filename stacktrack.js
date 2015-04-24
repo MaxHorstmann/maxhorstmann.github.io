@@ -15,7 +15,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
     $scope.apiRoot = 'https://api.stackexchange.com/2.2';
     $scope.key = 'Jn1HoRLSkS1IMtHxX0Tw0A((';
 
-    var accessToken = $cookies.get("accessToken");
+    var accessToken = $cookies["accessToken"];
     if (accessToken) {
         $scope.auth = {
             'accessToken' : accessToken
@@ -28,7 +28,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
                 $scope.auth = data;
                 $scope.$apply();
 
-                $cookies.put('accessToken', data.accessToken);
+                $cookies['accessToken'] = data.accessToken;
 
 
                 $scope.whoami();
