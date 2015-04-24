@@ -10,7 +10,7 @@ app.factory('firebaseConnection', ['$firebase', function($firebase) {
     };
 }]);
 
-app.controller('controller', ['$scope', '$http', '$cookies', $firebaseArray', 'firebaseConnection', function($scope, $http, $cookies, $firebaseArray, firebaseConnection) {
+app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', 'firebaseConnection', function($scope, $http, $cookies, $firebaseArray, firebaseConnection) {
 
     $scope.apiRoot = 'https://api.stackexchange.com/2.2';
     $scope.key = 'Jn1HoRLSkS1IMtHxX0Tw0A((';
