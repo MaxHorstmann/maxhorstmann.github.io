@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngCookies', firebase']);
+var app = angular.module('app', ['ngCookies', 'firebase']);
 
 app.factory('firebaseConnection', ['$firebase', function($firebase) {
     var firebase_url = 'https://stacktrack.firebaseio.com';
@@ -21,7 +21,6 @@ app.controller('controller', ['$scope', '$http', '$cookies', $firebaseArray', 'f
             'accessToken' : accessToken
         };
     };
-
 
     $scope.login = function() {
         SE.authenticate({
