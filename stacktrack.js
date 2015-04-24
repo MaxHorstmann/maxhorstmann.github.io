@@ -33,7 +33,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
 
     $scope.logout = function() {
         $scope.auth = null;
-        $cookies.remove('accessToken');
+        $cookies['accessToken'] = '';
         $scope.user = null;
         $scope.following = null;
     }
@@ -50,7 +50,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
                 $scope.$apply();
 
                 var accessToken = $cookies["accessToken"];
-                if (accessToken) {
+                if ((accessToken) && (len(accessToken)>0)) {
                     $scope.auth = {
                         'accessToken' : accessToken
                     };
