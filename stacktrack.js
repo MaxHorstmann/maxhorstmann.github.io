@@ -36,6 +36,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
         $cookies['accessToken'] = '';
         $scope.user = null;
         $scope.following = null;
+        $scope.timeline = null;
     }
 
     $scope.initializing = true;
