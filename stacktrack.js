@@ -15,13 +15,6 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
     $scope.apiRoot = 'https://api.stackexchange.com/2.2';
     $scope.key = 'Jn1HoRLSkS1IMtHxX0Tw0A((';
 
-    var accessToken = $cookies["accessToken"];
-    if (accessToken) {
-        $scope.auth = {
-            'accessToken' : accessToken
-        };
-    };
-
     $scope.login = function() {
         SE.authenticate({
             success: function(data) { 
@@ -48,6 +41,15 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
             complete: function (data) { 
                 $scope.initializing = false;
                 $scope.$apply();
+
+                var accessToken = $cookies["accessToken"];
+                if (accessToken) {
+                    $scope.auth = {
+                        'accessToken' : accessToken
+                    };
+                    $scope.whoami();
+                };
+
             }
         });
 
