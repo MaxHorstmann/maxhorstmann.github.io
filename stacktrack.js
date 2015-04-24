@@ -33,6 +33,9 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
 
     $scope.logout = function() {
         $scope.auth = null;
+        $cookies['accessToken'] = null;
+        $scope.user = null;
+        $scope.following = null;
     }
 
     $scope.initializing = true;
