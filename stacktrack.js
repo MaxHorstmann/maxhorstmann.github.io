@@ -57,7 +57,7 @@ app.controller('controller', ['$scope', '$http', '$firebaseArray', 'firebaseConn
             console.log(url);
             $scope.following = $firebaseArray(new Firebase(url));
 
-            var timelineUrl = $scope.apiRoot + "/me/timeline?site=stackoverflow&key=" + $scope.key +"&access_token=" + $scope.auth.accessToken;
+            var timelineUrl = $scope.apiRoot + "/"+ $scope.following[0] +"/timeline?site=stackoverflow&key=" + $scope.key +"&access_token=" + $scope.auth.accessToken;
             $http.get(timelineUrl).
               success(function(data, status, headers, config) {
                 console.log(data);
