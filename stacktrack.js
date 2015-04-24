@@ -31,6 +31,10 @@ app.controller('controller', ['$scope', '$http', '$cookies', '$firebaseArray', '
         });
     };
 
+    $scope.logout = function() {
+        $scope.auth = null;
+    }
+
     $scope.initializing = true;
 
     $scope.init = function() {
