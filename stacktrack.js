@@ -1,4 +1,4 @@
-var app = angular.module('app', ['firebase']);
+var app = angular.module('app', ['ngCookies', firebase']);
 
 app.factory('firebaseConnection', ['$firebase', function($firebase) {
     var firebase_url = 'https://stacktrack.firebaseio.com';
@@ -10,16 +10,27 @@ app.factory('firebaseConnection', ['$firebase', function($firebase) {
     };
 }]);
 
-app.controller('controller', ['$scope', '$http', '$firebaseArray', 'firebaseConnection', function($scope, $http, $firebaseArray, firebaseConnection) {
+app.controller('controller', ['$scope', '$http', '$cookies', $firebaseArray', 'firebaseConnection', function($scope, $http, $cookies, $firebaseArray, firebaseConnection) {
 
     $scope.apiRoot = 'https://api.stackexchange.com/2.2';
     $scope.key = 'Jn1HoRLSkS1IMtHxX0Tw0A((';
+
+    var accessToken = $cookies.get("accessToken");
+    if (accessToken) {
+        $scope.auth = {
+            'accessToken' : accessToken
+        };
+    };
+
 
     $scope.login = function() {
         SE.authenticate({
             success: function(data) { 
                 $scope.auth = data;
                 $scope.$apply();
+
+                $cookies.put('accessToken', data.accessToken);
+
 
                 $scope.whoami();
             },
