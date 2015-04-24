@@ -1,7 +1,7 @@
 <html ng-app="app">
 <body ng-controller="controller">
 
-    <button ng-click="login()">log in</button>
+    <button ng-click="login()" ng-hide="auth">log in</button>
 
     <div>{{ auth.accessToken }}</div>
     <div>{{ auth.expirationDate }}</div>
