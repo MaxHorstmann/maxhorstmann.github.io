@@ -61,6 +61,7 @@ app.controller('controller', ['$scope', '$http', '$firebaseArray', 'firebaseConn
             $http.get(timelineUrl).
               success(function(data, status, headers, config) {
                 console.log(data);
+                $scope.timeline = data.items;
               });
 
           }).
