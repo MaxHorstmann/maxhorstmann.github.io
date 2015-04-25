@@ -60,6 +60,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', function($scope, $h
     $scope.followNewUser = function() {
         $scope.following.push($scope.followNew);
         $scope.followNew = '';
+        $scope.updateNewsfeed();
     }
 
 
@@ -75,17 +76,23 @@ app.controller('controller', ['$scope', '$http', '$cookies', function($scope, $h
             console.log(data);
             $scope.user = data.items[0];
 
-            var timelineUrl = $scope.apiRoot + "/users/22656/timeline?site=stackoverflow&key=" + $scope.key +"&access_token=" + $scope.auth.accessToken;
-            $http.get(timelineUrl).
-              success(function(data, status, headers, config) {
-                $scope.timeline = data.items;
-              });
 
           }).
           error(function(data, status, headers, config) {
             alert('error');
           });
         }
+
+    $scope.updateNewsfeed = function() {
+
+        var timelineUrl = $scope.apiRoot + "/users/"+ $scope.following.join(',') +"/timeline?site=stackoverflow&key=" + $scope.key +"&access_token=" + $scope.auth.accessToken;
+        console.log(timelineUrl);
+        $http.get(timelineUrl).
+          success(function(data, status, headers, config) {
+            $scope.timeline = data.items;
+          });
+
+    }
 
     $scope.init();
 }]);
