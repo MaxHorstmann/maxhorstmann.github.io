@@ -41,7 +41,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', function($scope, $h
                 $scope.$apply();
 
                 var accessToken = $cookies.accessToken;
-                if ((accessToken) && (len(accessToken)>0)) {
+                if ((accessToken) && (accessToken.length>0)) {
                     $scope.auth = {
                         'accessToken' : accessToken
                     };
