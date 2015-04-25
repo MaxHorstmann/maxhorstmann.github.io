@@ -25,7 +25,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', function($scope, $h
         $scope.auth = null;
         $cookies.accessToken = '';
         $scope.user = null;
-        $scope.following = null;
+        $scope.following = [];
         $scope.timeline = null;
     }
 
