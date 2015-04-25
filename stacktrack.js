@@ -48,9 +48,9 @@ app.controller('controller', ['$scope', '$http', '$cookies', function($scope, $h
                     $scope.whoami();
 
                     var following = $cookies.following;
-                    if (following) {
-                        $scope.following = following;
-                    }
+                    // if (following) {
+                    //     $scope.following = following;
+                    // }
                 };
 
             }
