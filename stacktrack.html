@@ -18,6 +18,14 @@
 
     <div>
         Timeline:
+        <table>
+            <tr ng-repeat='t in timeline'>
+                <td>{{ t.creation_date }}</td>
+                <td>{{ t.user_id }}</td>
+                <td>{{ t.timeline_type }}</td>
+                <td>{{ t.title }}</td>
+            </tr>
+        </table>
         <ul>
             <li ng-repeat='t in timeline'>{{ t.timeline_type}},{{ t.detail }}</li>
         </ul>
