@@ -30,6 +30,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', function($scope, $h
     }
 
     $scope.initializing = true;
+    $scope.following = [];
 
     $scope.init = function() {
         SE.init({
