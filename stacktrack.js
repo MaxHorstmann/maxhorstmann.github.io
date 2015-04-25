@@ -85,7 +85,7 @@ app.controller('controller', ['$scope', '$http', '$cookies', function($scope, $h
 
     $scope.updateNewsfeed = function() {
 
-        var timelineUrl = $scope.apiRoot + "/users/"+ $scope.following.join(',') +"/timeline?site=stackoverflow&key=" + $scope.key +"&access_token=" + $scope.auth.accessToken;
+        var timelineUrl = $scope.apiRoot + "/users/"+ $scope.following.join(';') +"/timeline?site=stackoverflow&key=" + $scope.key +"&access_token=" + $scope.auth.accessToken;
         console.log(timelineUrl);
         $http.get(timelineUrl).
           success(function(data, status, headers, config) {
