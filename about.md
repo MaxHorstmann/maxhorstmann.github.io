@@ -8,7 +8,7 @@ Hi, I'm Max. I'm a software developer.
 
 Occasionally, I share my thoughts on programming, technology, startups, and career right here on my blog.
 
-I live in New York City and work at [Stack Exchange](http://www.stackexchange.com), the makers of [Stack Overflow](http://www.stackoverflow.com) and [Stack Overflow Careers](http://careers.stackoverflow.com), as a full-stack web developer.
+I live in New York City and work at [Stack Overflow](http://www.stackoverflow.com).
 
 Have a look at my [reading list](/reading).
 
