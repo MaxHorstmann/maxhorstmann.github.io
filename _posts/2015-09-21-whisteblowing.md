@@ -29,5 +29,5 @@ Even *if* you're getting fired over raising your voice (putting aside that this 
 
 As an aside, the least VW could do for the developer community is to provide full transparency into all the implementation details and open-source that evil masterpiece of software, so maybe some parts of it can be used for something good in the future. 
 
-
+[Discuss on Hacker News](https://news.ycombinator.com/item?id=10255045)
 
