@@ -6,7 +6,7 @@ categories:
 - Ethics
 status: published
 type: post
-published: false
+published: true
 ---
 
 Volkswagen, Germany's and Europe's largest car maker, [is in big trouble](http://www.npr.org/sections/thetwo-way/2015/09/21/442174444/volkswagen-stock-plummets-as-ceo-apologizes-for-emissions-cheat) after admitting that they built cheating software into their cars.
