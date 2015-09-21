@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'We software developers should be first to blow the whistle'
+title: 'Devs: blow the whistle!'
 date: 2015-09-21 
 categories:
 - Ethics
