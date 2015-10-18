@@ -38,5 +38,5 @@ So, should we maybe not only think about teaching computer science, but also fin
 I'd love to hear your thoughts on this.
 
 
-Discussion on [Hacker News](https://news.ycombinator.com) and [Reddit](https://www.reddit.com/r/programming).
+Discussion on [Hacker News](https://news.ycombinator.com/item?id=10407121) and [Reddit](https://www.reddit.com/r/programming/comments/3p6u78/what_we_might_have_to_teach_before_computer/).
 
