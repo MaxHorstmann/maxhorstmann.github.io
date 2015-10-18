@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'What we might have to teach before Computer Science'
-date: 2015-10-16 
+date: 2015-10-17 
 categories:
 - Education
 status: published
@@ -31,7 +31,7 @@ I'm thinking of skills such as:
 
 Here's why: while it may be possible for many students to learn and memorize computer science concepts to some degree, I suspect that it'll be very hard or impossible to actually *apply* them in the real world (outside of a classroom lab setup) without having acquired those underlying skills.  
 
-There is just no way to design, write, or test a functional piece of software without an almost borderline-OCD level of attention to detail. Even writing *specification* for software requires an high level of critical, thorough thinking and the ability to write down requiements, scenarios etc. in very precise terms.
+There is just no way to design, write, or test a functional piece of software without an almost borderline-OCD level of attention to detail. Even writing *specification* for software requires a high level of critical, thorough thinking and the ability to write down requiements, scenarios etc. in very precise terms.
 
 So, should we maybe not only think about teaching computer science, but also find new ways to sharpen those fundamentals beforehand?
 
