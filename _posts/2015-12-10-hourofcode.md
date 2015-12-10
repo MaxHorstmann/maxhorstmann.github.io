@@ -4,9 +4,9 @@ title: 'An Hour of Code at McKinney Secondary School'
 date: 2015-10-17 
 categories:
 - Education
-status: draft
+status: published
 type: post
-published: false
+published: true
 ---
 
 Yesterday, I had the amazing privilege to help bringing this year's [Hour of Code](http://hourofcode.com) to [Dr. Susan S McKinney Secondary School of the Arts](http://www.mckinneyssa.com/) in Fort Greene, Brooklyn as a volunteer. This is me, wearing my nerdy Stack Overflow gear, going over the [Minecraft tutorial](http://hourofcode.com/mc) in front of a class of 7th graders:
