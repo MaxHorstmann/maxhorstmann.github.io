@@ -11,7 +11,7 @@ published: true
 
 Yesterday, I had the amazing privilege to help bringing this year's [Hour of Code](http://hourofcode.com) to [Dr. Susan S McKinney Secondary School of the Arts](http://www.mckinneyssa.com/) in Fort Greene, Brooklyn as a volunteer. This is me, wearing my nerdy Stack Overflow gear, going over the [Minecraft tutorial](http://hourofcode.com/mc) in front of a class of 7th graders:
 
-![](/images/hourofcode1.png "Notice those MacBook Pros? Those were borrowed from a different school.")
+<img align="center" src="/images/hourofcode1.png" alt="Notice those MacBook Pros? Those were borrowed from a different school."/>
 
 <!-- more -->
 
@@ -27,16 +27,6 @@ Thanks to Mr. Carrion, Ms. Travis, and Tim Dussinger (another volunteer from Gen
 
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Amazing time today bringing <a href="https://twitter.com/hashtag/HourOfCode?src=hash">#HourOfCode</a> to McKinney Secondary School with Mr. Carrion, Ms. Travis. <a href="https://twitter.com/hashtag/CodeBrooklyn?src=hash">#CodeBrooklyn</a> <a href="https://t.co/e1LFOeahsR">pic.twitter.com/e1LFOeahsR</a></p>&mdash; Max Horstmann (@Max_Horstmann) <a href="https://twitter.com/Max_Horstmann/status/674655887898841088">December 9, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-
-
-
-
-
-
-
 
 
 
