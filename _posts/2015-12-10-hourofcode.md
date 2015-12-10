@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'The Hour of Code'
+title: 'An Hour of Code at McKinney Secondary School'
 date: 2015-10-17 
 categories:
 - Education
@@ -9,11 +9,11 @@ type: post
 published: false
 ---
 
-Yesterday, I had the amazing privilege tohelp bringing this year's [Hour of Code](http://hourofcode.com) to [Dr. Susan S McKinney Secondary School of the Arts](http://www.mckinneyssa.com/) in Fort Greene, Brooklyn as a volunteer. This is me, wearing my nerdy Stack Overflow gear, going over the [Minecraft tutorial](http://hourofcode.com/mc) in front of a class of 7th graders:
+Yesterday, I had the amazing privilege to help bringing this year's [Hour of Code](http://hourofcode.com) to [Dr. Susan S McKinney Secondary School of the Arts](http://www.mckinneyssa.com/) in Fort Greene, Brooklyn as a volunteer. This is me, wearing my nerdy Stack Overflow gear, going over the [Minecraft tutorial](http://hourofcode.com/mc) in front of a class of 7th graders:
 
-<div style="text-align:center">
-<img src="/images/hourofcode1.png" />
-</div>
+![](/images/hourofcode1.png)
+
+<!-- more -->
 
 It was fantastic to see how excited those kids were to learn how to code! The folks at [code.org](http://code.org) did a great job  putting together a set of fun tutorials which make it really easy to get started with basic coding concepts. In fact, I could literally watch some of the students grasping the idea of a loop right in front of my eyes. 
 
@@ -39,7 +39,6 @@ Thanks to Mr. Carrion, Ms. Travis, and Tim Dussinger (another volunteer from Gen
 
 
 
-<!-- more -->
 
 <!-- Discussion on [Hacker News](https://news.ycombinator.com/item?id=10407121) and [Reddit](https://www.reddit.com/r/programming/comments/3p6u78/what_we_might_have_to_teach_before_computer/). -->
 
