@@ -11,7 +11,7 @@ published: true
 
 Yesterday, I had the amazing privilege to help bringing this year's [Hour of Code](http://hourofcode.com) to [Dr. Susan S McKinney Secondary School of the Arts](http://www.mckinneyssa.com/) in Fort Greene, Brooklyn as a volunteer. This is me, wearing my nerdy Stack Overflow gear, going over the [Minecraft tutorial](http://hourofcode.com/mc) in front of a class of 7th graders:
 
-<img align="center" src="/images/hourofcode1.png" alt="Notice those MacBook Pros? Those were borrowed from a different school."/>
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/hourofcode1.png" alt="Notice those MacBook Pros? Those were borrowed from a different school."/>
 
 <!-- more -->
 
