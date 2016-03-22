@@ -10,7 +10,6 @@ published: true
 ---
 
 Here's one of my favorite programming questions: let's say, in a C# program, we have a parent class
-
 {% highlight java %} 
 {% raw %}
 class Book
@@ -19,15 +18,15 @@ class Book
 }
 {% endraw %}
 {% endhighlight %}
-
 and a child class
-
-```
+{% highlight java %} 
+{% raw %}
 class EBook : Book
 {
     public void Download() {  Console.WriteLine("Downloading... "); }
 }
-```
+{% endraw %}
+{% endhighlight %}
 
 <!-- more -->
 
