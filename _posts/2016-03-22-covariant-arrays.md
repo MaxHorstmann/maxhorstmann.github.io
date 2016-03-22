@@ -18,12 +18,10 @@ class Book
 {% endhighlight %}
 and a child class
 {% highlight c %} 
-{% raw %}
 class EBook : Book
 {
     public void Download() {  Console.WriteLine("Downloading... "); }
 }
-{% endraw %}
 {% endhighlight %}
 
 <!-- more -->
@@ -33,10 +31,8 @@ In other words, EBook *is a* Book (a more special one - it can be downloaded).
 Will the following code compile or not?
 
 {% highlight c %} 
-{% raw %}
 EBook[] eBooks = new EBook[10];
 Book[] books = eBooks;  
-{% endraw %}
 {% endhighlight %}
 
 I like this question, because when I heard it first, I went through the following thinking process:
@@ -46,15 +42,13 @@ I like this question, because when I heard it first, I went through the followin
 * However, although an EBook is a Book, that doesn't automatically mean that an **array** of EBooks *is an* **array** of Books. In fact, there's a problem with that: if the compiler will accept the conversion above, one could do this next:
 
 {% highlight c %} 
-{% raw %}books[0] = new Book(){% endraw %}
+books[0] = new Book()
 {% endhighlight %}
 
 Whoops - now we've inserted a new element into the array which is just a Book, not an eBook. So, if we now try to do this with the eBooks reference to the same array...
 
 {% highlight c %} 
-{% raw %}
 eBooks[0].Download();
-{% endraw %}
 {% endhighlight %}
 
 ... it won't work - the Download method is not defined on the parent type. So, the answer must be "no"!
