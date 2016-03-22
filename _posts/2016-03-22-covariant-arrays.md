@@ -10,12 +10,13 @@ published: true
 ---
 
 Here's one of my favorite programming questions: let's say, in a C# program, we have a parent class
-{% highlight c %} 
+```
 class Book
 {
 	public void Read() { Console.WriteLine("Reading..."); }
 }
-{% endhighlight %}
+```
+
 and a child class
 {% highlight c %} 
 class EBook : Book
