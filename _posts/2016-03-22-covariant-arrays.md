@@ -60,7 +60,7 @@ eBooks[0].Download();
 
 Well - turns out the right answer is actually "yes": the code *will* compile. The reason for that is that C# (and also Java) supports **co-variant array conversions**. It basically means that if B is a subtype of A, an array of B will also be treated as a subtype of A and array insertions are checked at *runtime*. So, while the example above will compile, the assignment to ```books[0]``` will throw an [ArrayTypeMismatchException](https://msdn.microsoft.com/en-us/library/system.arraytypemismatchexception(v=vs.110).aspx). 
 
-Have a look at the Wikipedia article on [https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)) for more - it's an interesting topic which tends to fry even the brains of experienced programmers.
+Have a look at the Wikipedia article on [Covariance and contravariance](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)) for more - it's an interesting topic which tends to fry even the brains of experienced programmers.
 
 
 
