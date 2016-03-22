@@ -9,6 +9,8 @@ type: post
 published: false
 ---
 
+Here's one of my favorite programming questions:
+
 Let's say, in a C# program, we have a parent class
 
 ```
