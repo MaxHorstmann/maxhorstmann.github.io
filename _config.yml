@@ -49,6 +49,10 @@ excerpt_separator: ""   # Workaround for http://blog.slaks.net/2013-08-09/jekyll
 # !! You don't need to change any of the configuration flags below !!
 #
 
+syntax-highlighting:
+  enabled : true
+  css: syntax.css
+
 markdown: kramdown
 highlighter: rouge
 permalink: /blog/:year/:month/:day/:title/
