@@ -48,9 +48,7 @@ I like this question, because when I heard it first, I went through the followin
 * However, although an EBook is a Book, that doesn't automatically mean that an **array** of EBooks *is an* **array** of Books. In fact, there's a problem with that: if the compiler will accept the conversion above, one could do this next:
 
 {% highlight c %} 
-{% raw %}
-books[0] = new Book()
-{% endraw %}
+{% raw %}books[0] = new Book(){% endraw %}
 {% endhighlight %}
 
 Whoops - now we've inserted a new element into the array which is just a Book, not an eBook. So, if we now try to do this with the eBooks reference to the same array...
@@ -70,7 +68,7 @@ The reason for that is that C# (and also Java) supports **covariant array conver
 Things get more complicated with generic containers such as Lists (covariant/contravariant type parameters in C#, and the notorious wildcard types in Java...), but that's kinda expected. 
 
 
-For more, I recommend the Wikipedia article on [Covariance and contravariance](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)) for more - it's an interesting topic which tends to fry even the brains of experienced programmers. 
+For more, I recommend the Wikipedia article on [Covariance and contravariance](https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)). It's an interesting topic which tends to fry even the brains of experienced programmers. 
 
 
 
