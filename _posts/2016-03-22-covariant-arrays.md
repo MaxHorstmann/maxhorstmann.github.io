@@ -11,7 +11,7 @@ published: true
 
 Here's one of my favorite programming questions: let's say, in a C# program, we have a parent class
 
-```
+```csharp
 class Book
 {
 	public void Read() { Console.WriteLine("Reading..."); }
