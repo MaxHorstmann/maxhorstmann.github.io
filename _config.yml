@@ -50,7 +50,7 @@ excerpt_separator: ""   # Workaround for http://blog.slaks.net/2013-08-09/jekyll
 #
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 permalink: /blog/:year/:month/:day/:title/
 
 # The release of Jekyll Now that you're using
