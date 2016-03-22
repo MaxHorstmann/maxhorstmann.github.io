@@ -10,7 +10,7 @@ published: true
 ---
 
 Here's one of my favorite programming questions: let's say, in a C# program, we have a parent class
-{% highlight java %} 
+{% highlight c %} 
 {% raw %}
 class Book
 {
@@ -19,7 +19,7 @@ class Book
 {% endraw %}
 {% endhighlight %}
 and a child class
-{% highlight java %} 
+{% highlight c %} 
 {% raw %}
 class EBook : Book
 {
@@ -34,10 +34,12 @@ In other words, EBook *is a* Book (a more special one - it can be downloaded).
 
 Will the following code compile or not?
 
-```
+{% highlight c %} 
+{% raw %}
 EBook[] eBooks = new EBook[10];
 Book[] books = eBooks;  
-```
+{% endraw %}
+{% endhighlight %}
 
 I like this question, because when I heard it first, I went through the following thinking process:
 
@@ -45,15 +47,19 @@ I like this question, because when I heard it first, I went through the followin
 
 * However, although an EBook is a Book, that doesn't automatically mean that an **array** of EBooks *is an* **array** of Books. In fact, there's a problem with that: if the compiler will accept the conversion above, one could do this next:
 
-```
+{% highlight c %} 
+{% raw %}
 books[0] = new Book()
-```
+{% endraw %}
+{% endhighlight %}
 
 Whoops - now we've inserted a new element into the array which is just a Book, not an eBook. So, if we now try to do this with the eBooks reference to the same array...
 
-```
+{% highlight c %} 
+{% raw %}
 eBooks[0].Download();
-```
+{% endraw %}
+{% endhighlight %}
 
 ... it won't work - the Download method is not defined on the parent type. So, the answer must be "no"!
 
