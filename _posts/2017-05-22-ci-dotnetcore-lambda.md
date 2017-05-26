@@ -112,9 +112,8 @@ Note that the CLI also supports [create-function](http://docs.aws.amazon.com/cli
 
 As always, building and deploying from your local dev box is not ideal. What we really want is clean, reproducable builds on a build server and a fully automated deployment pipeline. 
 
-There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). Codebuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services; it's fairly simple but does two things well: Docker support, on-demand.
+There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). Codebuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services. It's not particularly sophisticated in terms of features, and pales in comparison to full-fledged solutions like [TeamCity](https://www.jetbrains.com/teamcity/) (which we're using at Stack Overflow). But it's doing one thing particularly well: just like other cloud services, it provisions and scales resources as needed, and you'll get billed by the build-minute. With a non-expiring 100 build minutes per month [free tier](https://aws.amazon.com/s/dm/optimization/server-side-test/free-tier/free_np), we'll be able to deploy a good number of updates to our Lambda function free of charge.
 
-TODO..
 
 
 
