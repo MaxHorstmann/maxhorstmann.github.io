@@ -94,16 +94,24 @@ $ zip MyProject.zip *
 
 <img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda2.png"/>
 
+And that's it! Create the function and test it, it should return a result like this:
 
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda3.png"/>
 
-
-
-
-
+Next, we could for example expose the function with an [API Gateway trigger](http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html). 
 
 ### Automatic Deployment
 
-### Trigger it from GitHub
+Of course, we don't want to manually upload a zip file through the Lambda UI every time we want to deploy a new version of our function. Fortunately, it can be done with the [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) via [update-function-code](http://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html). So, in order to build and deploy from your local machine, add the build and zip steps above to a shell script, followed by:
+
+```
+aws lambda update-function-code --function-name myLambdaFunction --zip-file fileb://MyProject.zip
+```
+
+
+
+
+### Trigger on git push
 
 
 
