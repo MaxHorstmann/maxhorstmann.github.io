@@ -194,21 +194,17 @@ Let's quickly confirm that our Lambda function has really been updated:
 
 Yup!
 
+### Web Hooks
 
+Clicking a single button to build and deploy is already pretty good, but wouldn't it be even nicer if any `git push` to the master branch triggered a build? (At least to a staging environment, not necessarily your production instance)
 
+Unfortunately, there's no trivial way to set this up just yet: on the GitHub side, there's out-of-the-box integration with several AWS services, but CodeBuild isn't one of them yet. Their support team promised me to look into it:
 
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Max_Horstmann">@Max_Horstmann</a> Thanks for your interest! I&#39;ll let the team know you&#39;re interested in AWS CodeBuild being added! -SJ</p>&mdash; GitHub Support (@GitHubHelp) <a href="https://twitter.com/GitHubHelp/status/866684894776352768">May 22, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+Same on the CodeBuild side: although the build configuration is aware of the GitHub repo it's pulling from, unfortunately you can't set it up to automatically kick off a build should that repo be updated.
 
+I contacted AWS support and they suggested to try out [Simple Notification Service (SNS)](https://aws.amazon.com/sns) and/or [Simple Queue Service (SQS)](https://aws.amazon.com/sqs). Unfortunately though, both these services *do* integrate out of the box with GitHub, but not with CodeBuild - i.e. a checking can trigger a notification message, but there's no easy way for that message to trigger a build. A nice extension to CodeBild would be the ability to subscribe to a SNS topic and trigger builds accordingly - hopefully something they will consider adding in the future.
 
-
-
-
-
-
-
-
-
-
-
-
-
+That's all for today. Happy CI-ing!
