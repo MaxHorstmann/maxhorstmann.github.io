@@ -85,8 +85,10 @@ $ dotnet publish -c Release
 
 Now we need to zip the content of the `publish` folder....
 
+```
 $ cd bin/Release/netcoreapp1.0/publish
 $ zip MyProject.zip *
+```
 
 ... which creates the zip file we'll have to upload. We'll also have to specify a handler, which is the function's entry point `in the format `assembly::namespace.class-name::method-name`. In our case, that's `MyProject::MyNamespace.MyClass::MyFunction`. We'll also have to specify a role.
 
