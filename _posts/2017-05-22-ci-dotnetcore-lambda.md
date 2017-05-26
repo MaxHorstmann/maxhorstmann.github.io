@@ -112,10 +112,10 @@ Note that the CLI also supports [create-function](http://docs.aws.amazon.com/cli
 
 ### AWS CodeBuild
 
-Building and deploying from your local dev box is not ideal. What we really want is clean, reproducable builds on a build server and a fully automated deployment pipeline. 
+Building and deploying from your local dev box is not ideal though. What we really want is clean, reproducable builds on a build server and a fully automated deployment pipeline. 
 
 
-There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). CodeBuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services. It's not particularly sophisticated in terms of features, and pales in comparison to full-fledged solutions like [TeamCity](https://www.jetbrains.com/teamcity/) (which we're using at Stack Overflow). But it's doing one thing well: just like other cloud services, it provisions and scales resources as needed, and you'll get billed by the build-minute. With a non-expiring 100 build minutes per month [free tier](https://aws.amazon.com/s/dm/optimization/server-side-test/free-tier/free_np), we'll be able to deploy a good number of updates to our Lambda function free of charge.
+There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). CodeBuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services. It's not particularly sophisticated in terms of features, and pales in comparison to full-fledged solutions like [TeamCity](https://www.jetbrains.com/teamcity/) (which we're using at Stack Overflow). But it's doing one thing well: just like other cloud services, it provisions and scales resources on-demand as needed, and you'll get billed by the build-minute. With a non-expiring 100 build minutes per month [free tier](https://aws.amazon.com/s/dm/optimization/server-side-test/free-tier/free_np), we'll be able to deploy a good number of updates to our Lambda function free of charge.
 
 First, let's check our code in to a GitHub repo. Here's mine: [dotnetcore-lambda-sample](https://github.com/MaxHorstmann/dotnetcore-lambda-sample)
 
@@ -188,9 +188,11 @@ Let's try it out and check in a small code change to `MyClass.cs`...
 
 Success! A little over a minute for a complete build & deployment isn't too bad if we keep in mind that this includes spinning up the build environment with our Docker image. Consecutive builds shortly after tend to be even faster if we happen to hit a build machine with a cached version of the Docker image - I've seen build times as fast as 22 seconds.
 
-Let's confirm that this really 
+Let's quickly confirm that our Lambda function has really been updated:
 
 <img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda8.png"/>
+
+Yup!
 
 
 
