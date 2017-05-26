@@ -167,7 +167,7 @@ phases:
 
 And we're almost done. There's one more thing left to do: the AWS CLI needs proper credentials to talk to Lambda, so we need to set two environment variables, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`:
 
-<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda4.png"/>
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda5.png"/>
 
 See [Managing Access Keys for IAM Users](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 
