@@ -12,7 +12,7 @@ published: false
 
 End of last year, [AWS Lambda](https://aws.amazon.com/lambda), Amazon's popular Function as a Service (FaaS) offering, [announced](https://aws.amazon.com/blogs/compute/announcing-c-sharp-support-for-aws-lambda) C# support based on the .NET Core runtime.
 
-Which is neat, because there's a lot of interesting things you can do with Lambda. One of them is hosting [custom skills for Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function), Amazon's voice interface for Echo, for free. I'll blog about that use case in a later post. Spoiler alert: "Alexa, any answers to my Stack Overflow questions?"
+Which is neat, because there's a lot of interesting things you can do with Lambda. One of them is hosting [custom skills for Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function), Amazon's voice interface for Echo, for free. I'll blog about that use case in a later post. (Spoiler alert: "Alexa, any answers to my Stack Overflow questions?")
 
 One of the first things I like to set up in a new tech ecosystem is a continuous integration (CI) pipeline. This post describes a simple CI setup for C#/.NET Core code to Amazon Lambda.
 
@@ -90,7 +90,7 @@ $ cd bin/Release/netcoreapp1.0/publish
 $ zip MyProject.zip *
 ```
 
-... which creates the zip file we'll have to upload. We'll also have to specify a handler, which is the function's entry point in the format `assembly::namespace.class-name::method-name`. In our case, that's `MyProject::MyNamespace.MyClass::MyFunction`. We'll also have to specify a role for security purposes:
+... which creates the zip file we'll have to upload. We'll also have to specify a handler, which is the function's entry point in the format `assembly::namespace.class-name::method-name`. In our case, that's `MyProject::MyNamespace.MyClass::MyFunction`. Finally, we have to specify a role for security purposes:
 
 <img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda2.png"/>
 
@@ -98,11 +98,11 @@ And that's it! Create the function and test it, it should return a result like t
 
 <img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda3.png"/>
 
-Next, we could for example expose the function with an [API Gateway trigger](http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html). 
+Adding an [API Gateway trigger](http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html) would expose the function to external callers, but let's not worry about that right now. 
 
 ### Automatic Deployment
 
-Of course, we don't want to manually upload a zip file through the Lambda UI every time we want to deploy a new version of our function. Fortunately, it can be done with the [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) via [update-function-code](http://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html). So, in order to build and deploy from your local machine, add the build and zip steps above to a shell script, followed by:
+Of course, we don't want to manually upload a zip file through the Lambda UI every time we want to deploy a new version of our function. Fortunately, it can be done with the [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) via [update-function-code](http://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html). So, in order to build and deploy from your local machine, add the build and zip steps above to a shell script (if you're on Windows, you'll need to find a command-line zip tool), followed by:
 
 ```
 aws lambda update-function-code --function-name myLambdaFunction --zip-file fileb://MyProject.zip
@@ -112,7 +112,17 @@ Note that the CLI also supports [create-function](http://docs.aws.amazon.com/cli
 
 As always, building and deploying from your local dev box is not ideal. What we really want is clean, reproducable builds on a build server and a fully automated deployment pipeline. 
 
-There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). Codebuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services. It's not particularly sophisticated in terms of features, and pales in comparison to full-fledged solutions like [TeamCity](https://www.jetbrains.com/teamcity/) (which we're using at Stack Overflow). But it's doing one thing particularly well: just like other cloud services, it provisions and scales resources as needed, and you'll get billed by the build-minute. With a non-expiring 100 build minutes per month [free tier](https://aws.amazon.com/s/dm/optimization/server-side-test/free-tier/free_np), we'll be able to deploy a good number of updates to our Lambda function free of charge.
+### AWS CodeBuild
+
+There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). CodeBuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services. It's not particularly sophisticated in terms of features, and pales in comparison to full-fledged solutions like [TeamCity](https://www.jetbrains.com/teamcity/) (which we're using at Stack Overflow). But it's doing one thing well: just like other cloud services, it provisions and scales resources as needed, and you'll get billed by the build-minute. With a non-expiring 100 build minutes per month [free tier](https://aws.amazon.com/s/dm/optimization/server-side-test/free-tier/free_np), we'll be able to deploy a good number of updates to our Lambda function free of charge.
+
+First, let's check our code in to a GitHub repo. Here's mine: [dotnetcore-lambda-sample](https://github.com/MaxHorstmann/dotnetcore-lambda-sample)
+
+Next, let's go to the [AWS CodeBuild console](https://console.aws.amazon.com/codebuild/home) and create a new project:
+
+
+
+
 
 
 
