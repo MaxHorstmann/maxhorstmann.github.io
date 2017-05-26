@@ -83,7 +83,7 @@ $ dotnet restore
 $ dotnet publish -c Release
 ```
 
-Now we need to zip the content of the `publish` folder....
+Now we need to zip the content of the `publish` folder...
 
 ```
 $ cd bin/Release/netcoreapp1.0/publish
