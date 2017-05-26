@@ -17,7 +17,7 @@ One of the first things I like to set up in a new tech ecosystem is a continuous
 
 <!-- more -->
 
-### Writing an AWS Lambda function in C#
+### Writing an AWS Lambda function in C\#
 
 We'll start by creating a clean new .NET Core project. Lambda currently supports the 1.0 runtime:
 
