@@ -125,7 +125,7 @@ We'll give it a name and link it to the GitHub repo...
 
 <img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda4.png"/>
 
-...and now for the interesting part: we need to specify a *build environment* and the actual *build steps*. For the build environment, CodeBuild supports Linux Docker images - great! So, what we'll need is a Linux Docker image which contains the .NET Core SDK and the AWS CLI. Conveniently, Microsoft provides a set of official images for .NET Core on Docker Hub called [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet), with respective tags for the various runtime and SDK versions. 
+...and now for the interesting part: we need to specify a *build environment* and the actual *build steps*. For the build environment, CodeBuild supports (Linux) Docker images - great! So, what we'll need is an image which contains the .NET Core SDK and the AWS CLI. Conveniently, Microsoft provides a set of official images for .NET Core on Docker Hub called [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet), with respective tags for the various runtime and SDK versions. 
 
 With only a few steps, we can create our own Docker image based off microsoft/dotnet and publish it to Docker hub. Here's the [Dockerfile](https://github.com/MaxHorstmann/dotnetcore-lambda-ci/blob/master/Dockerfile):
 
@@ -171,10 +171,26 @@ And we're almost done. There's one more thing left to do: the AWS CLI needs prop
 
 See [Managing Access Keys for IAM Users](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 
-### Real-time CI: build on git push
+### Build!
 
+Let's try it out and check in a small code change to `MyClass.cs`...
 
+```csharp
+    	public object MyFunction()
+    	{
+    		return new { message = "Hello from Lambda!", automated_build = true, time = DateTime.UtcNow };
+    	}
+```
 
+.. and kick off a build:
+
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda7.png"/>
+
+Success! A little over a minute for a complete build & deployment isn't too bad if we keep in mind that this includes spinning up the build environment with our Docker image. Consecutive builds shortly after tend to be even faster if we happen to hit a build machine with a cached version of the Docker image - I've seen build times as fast as 22 seconds.
+
+Let's confirm that this really 
+
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda8.png"/>
 
 
 
