@@ -18,9 +18,9 @@ One of the first things I like to set up in a new tech ecosystem is a continuous
 
 <!-- more -->
 
-### Let's write a AWS Lambda function in C#
+### Writing an AWS Lambda function in C#
 
-We'll start by creating a clean new .NET Core project (Lambda currently supports the 1.0 runtime):
+We'll start by creating a clean new .NET Core project. Lambda currently supports the 1.0 runtime:
 
 ```
 $ dotnet new classlib --framework netcoreapp1.0
@@ -66,13 +66,15 @@ namespace MyNamespace
 }
 ```
 
-With the `LambdaSerializerAttribute`, JSON serialization will be taken care of: our function can just accept and return .NET objects as needed.
+With the `LambdaSerializerAttribute`, JSON serialization will be taken care of. Basically, our function can just accept and return .NET objects as needed.
 
 ### Manual Deployment
 
-Before automating build & deployment, let's deploy our lambda function manually. On the [AWS Lambda](https://console.aws.amazon.com/lambda/home) dashboard page, click *Create a Lambda Function* and select the *Blank Function* blueprint. Skip the *Configure triggers* page for now.
+Before automating build & deployment, let's set up our lambda function manually. On the [AWS Lambda](https://console.aws.amazon.com/lambda/home) dashboard page, click *Create a Lambda Function* and select the *Blank Function* blueprint. Skip the *Configure triggers* page for now.
 
+On the *Configure Function* page, select the *C#* runtime (which should really be called *.NET Core 1.0*):
 
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda1.png"/>
 
 
 ### Automatic Deployment
