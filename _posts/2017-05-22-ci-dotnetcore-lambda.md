@@ -76,9 +76,7 @@ On the *Configure Function* page, give your function a name and select the *C#* 
 
 <img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda1.png"/>
 
-You'll notice that unlike with other runtimes, unfortunately you can't just paste your code inline here put you'll need to uplodate a zip file with your compiled assembly and all references. 
-
-Time to build and package our function:
+You'll notice that unlike with other runtimes, unfortunately we can't just paste our code inline right here. Instead, a zip file with our compiled assembly and all references needs to be uploaded. So - time to build and package our function:
 
 ```
 $ dotnet restore
