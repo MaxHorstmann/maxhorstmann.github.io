@@ -108,6 +108,14 @@ Of course, we don't want to manually upload a zip file through the Lambda UI eve
 aws lambda update-function-code --function-name myLambdaFunction --zip-file fileb://MyProject.zip
 ```
 
+Note that the CLI also supports [create-function](http://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html), in case you also want to automate the initial setup. 
+
+As always, building and deploying from your local dev box is not ideal. What we really want is clean, reproducable builds on a build server and a fully automated deployment pipeline. 
+
+There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). Codebuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services; it's fairly simple but does two things well: Docker support, on-demand.
+
+TODO..
+
 
 
 
