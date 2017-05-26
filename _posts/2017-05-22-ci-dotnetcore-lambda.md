@@ -118,7 +118,35 @@ There's an endless number of CI tools to choose from, but for this exercise, let
 
 First, let's check our code in to a GitHub repo. Here's mine: [dotnetcore-lambda-sample](https://github.com/MaxHorstmann/dotnetcore-lambda-sample)
 
-Next, let's go to the [AWS CodeBuild console](https://console.aws.amazon.com/codebuild/home) and create a new project:
+Next, let's go to the [AWS CodeBuild console](https://console.aws.amazon.com/codebuild/home) and create a new project.
+
+We'll give it a name and link it to the GitHub repo...
+
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda4.png"/>
+
+...and now for the interesting part: we need to specify a *build environment* and the actual *build steps*. For the build environment, CodeBuild supports Linux Docker images - great! So, what we'll need is a Linux Docker image which contains the .NET Core SDK and the AWS CLI. Conveniently, Microsoft provides a set of official images for .NET Core on Docker Hub called [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet), with respective tags for the various runtime and SDK versions. 
+
+With only a few steps, we can create our own Docker image based off microsoft/dotnet and publish it to Docker hub. Here's the [Dockerfile](https://github.com/MaxHorstmann/dotnetcore-lambda-ci/blob/master/Dockerfile):
+
+```
+FROM microsoft/dotnet:1.1-sdk
+MAINTAINER Max Horstmann
+
+RUN apt-get -y update      
+RUN apt-get -y install zip
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+RUN unzip awscli-bundle.zip
+RUN ./awscli-bundle/install -b ~/bin/aws
+```
+
+The Microsoft dotnet image doesn't contain the zip utility, so we had to throw that in as well. 
+
+In order to get the new Docker image published to Docker Hub, I set up an [automated build](https://docs.docker.com/docker-hub/builds) for a new image called [maxhorstmann/dotnetcore-lambda-ci](https://hub.docker.com/r/maxhorstmann/dotnetcore-lambda-ci). You're welcome to use it, too.
+
+
+
+
+
 
 
 
