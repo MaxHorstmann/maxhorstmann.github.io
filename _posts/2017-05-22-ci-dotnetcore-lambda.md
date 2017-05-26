@@ -205,6 +205,6 @@ Unfortunately, there's no trivial way to set this up just yet: on the GitHub sid
 
 Same on the CodeBuild side: although the build configuration is aware of the GitHub repo it's pulling from, unfortunately you can't set it up to automatically kick off a build should that repo be updated.
 
-I contacted AWS support and they suggested to try out [Simple Notification Service (SNS)](https://aws.amazon.com/sns) and/or [Simple Queue Service (SQS)](https://aws.amazon.com/sqs). Unfortunately though, both these services *do* integrate out of the box with GitHub, but not with CodeBuild - i.e. a checking can trigger a notification message, but there's no easy way for that message to trigger a build. A nice extension to CodeBild would be the ability to subscribe to a SNS topic and trigger builds accordingly - hopefully something they will consider adding in the future.
+I contacted AWS support and they suggested to try out [Simple Notification Service (SNS)](https://aws.amazon.com/sns) and/or [Simple Queue Service (SQS)](https://aws.amazon.com/sqs). Unfortunately though, both these services *do* integrate out of the box with GitHub, but not with CodeBuild - i.e. a `git push` can trigger a notification message, but there's no easy way for that message to trigger a build. A nice extension to CodeBild would be the ability to subscribe to a SNS topic and trigger builds accordingly - hopefully something they will consider adding in the future.
 
 That's all for today. Happy CI-ing!
