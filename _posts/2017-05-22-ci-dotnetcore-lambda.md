@@ -110,7 +110,9 @@ Adding an [API Gateway trigger](http://docs.aws.amazon.com/apigateway/latest/dev
 Of course, we don't want to manually upload a zip file through the Lambda UI every time we want to deploy a new version of our function. Fortunately, it can be done with the [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) via [update-function-code](http://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html). So, in order to build and deploy from your local machine, add the build and zip steps above to a shell script (if you're on Windows, you'll need to install a command line zip tool), followed by:
 
 ```
-aws lambda update-function-code --function-name myLambdaFunction --zip-file fileb://MyProject.zip
+aws lambda update-function-code 
+	--function-name myLambdaFunction 
+	--zip-file fileb://MyProject.zip
 ```
 
 Note that the CLI also supports [create-function](http://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html), in case you also want to automate the initial setup. 
