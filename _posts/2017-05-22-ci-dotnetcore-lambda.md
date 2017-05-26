@@ -46,8 +46,36 @@ We'll also add references to [Amazon.Lambda.Core](https://www.nuget.org/packages
 </Project>
 ```
 
+Now, let's edit `MyClass.cs` and write a minimalistic function:
 
-### Let's automate deployment
+```csharp
+using System;
+using Amazon.Lambda.Core;
+
+[assembly: LambdaSerializerAttribute(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
+
+namespace MyNamespace
+{
+    public class MyClass
+    {
+    	public object MyFunction()
+    	{
+    		return new { message = "Hello from Lambda!", time = DateTime.UtcNow };
+    	}
+    }
+}
+```
+
+With the `LambdaSerializerAttribute`, JSON serialization will be taken care of: our function can just accept and return .NET objects as needed.
+
+### Manual Deployment
+
+Before automating build & deployment, let's deploy our lambda function manually. On the [AWS Lambda](https://console.aws.amazon.com/lambda/home) dashboard page, click *Create a Lambda Function* and select the *Blank Function* blueprint. Skip the *Configure triggers* page for now.
+
+
+
+
+### Automatic Deployment
 
 ### Trigger it from GitHub
 
