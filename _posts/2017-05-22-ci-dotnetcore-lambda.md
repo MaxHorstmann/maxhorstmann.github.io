@@ -39,7 +39,8 @@ We'll also add references to [Amazon.Lambda.Core](https://www.nuget.org/packages
 
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.Core" Version="1.0.0" />
-    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.1.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.Json" 
+    		Version="1.1.0" />
   </ItemGroup>
 
 </Project>
@@ -51,7 +52,8 @@ Now, let's edit `MyClass.cs` and write a minimalistic function:
 using System;
 using Amazon.Lambda.Core;
 
-[assembly: LambdaSerializerAttribute(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
+[assembly: LambdaSerializerAttribute(
+	typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
 namespace MyNamespace
 {
