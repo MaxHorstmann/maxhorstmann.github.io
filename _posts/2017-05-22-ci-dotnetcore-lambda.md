@@ -168,7 +168,9 @@ phases:
       - cd bin/Release/netcoreapp1.0/publish
       - zip ../../../../MyProject.zip *
       - cd ../../../..
-      - /root/bin/aws lambda update-function-code --function-name myTestLambda --zip-file fileb://MyProject.zip
+      - /root/bin/aws lambda update-function-code 
+      			--function-name myTestLambda 
+      			--zip-file fileb://MyProject.zip
 
 ```
 
