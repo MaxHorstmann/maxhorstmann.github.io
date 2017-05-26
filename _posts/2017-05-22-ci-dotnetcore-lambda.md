@@ -102,7 +102,7 @@ Adding an [API Gateway trigger](http://docs.aws.amazon.com/apigateway/latest/dev
 
 ### Automatic Deployment
 
-Of course, we don't want to manually upload a zip file through the Lambda UI every time we want to deploy a new version of our function. Fortunately, it can be done with the [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) via [update-function-code](http://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html). So, in order to build and deploy from your local machine, add the build and zip steps above to a shell script (if you're on Windows, you'll need to find a command-line zip tool), followed by:
+Of course, we don't want to manually upload a zip file through the Lambda UI every time we want to deploy a new version of our function. Fortunately, it can be done with the [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) via [update-function-code](http://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html). So, in order to build and deploy from your local machine, add the build and zip steps above to a shell script (if you're on Windows, you'll need to install a command line zip tool), followed by:
 
 ```
 aws lambda update-function-code --function-name myLambdaFunction --zip-file fileb://MyProject.zip
@@ -110,9 +110,10 @@ aws lambda update-function-code --function-name myLambdaFunction --zip-file file
 
 Note that the CLI also supports [create-function](http://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html), in case you also want to automate the initial setup. 
 
-As always, building and deploying from your local dev box is not ideal. What we really want is clean, reproducable builds on a build server and a fully automated deployment pipeline. 
-
 ### AWS CodeBuild
+
+Building and deploying from your local dev box is not ideal. What we really want is clean, reproducable builds on a build server and a fully automated deployment pipeline. 
+
 
 There's an endless number of CI tools to choose from, but for this exercise, let's stay inside the AWS universe and go with [AWS CodeBuild](https://aws.amazon.com/codebuild). CodeBuild is a fairly [recent](https://aws.amazon.com/blogs/aws/aws-codebuild-fully-managed-build-service) addition to Amazon's services. It's not particularly sophisticated in terms of features, and pales in comparison to full-fledged solutions like [TeamCity](https://www.jetbrains.com/teamcity/) (which we're using at Stack Overflow). But it's doing one thing well: just like other cloud services, it provisions and scales resources as needed, and you'll get billed by the build-minute. With a non-expiring 100 build minutes per month [free tier](https://aws.amazon.com/s/dm/optimization/server-side-test/free-tier/free_np), we'll be able to deploy a good number of updates to our Lambda function free of charge.
 
@@ -143,20 +144,34 @@ The Microsoft dotnet image doesn't contain the zip utility, so we had to throw t
 
 In order to get the new Docker image published to Docker Hub, I set up an [automated build](https://docs.docker.com/docker-hub/builds) for a new image called [maxhorstmann/dotnetcore-lambda-ci](https://hub.docker.com/r/maxhorstmann/dotnetcore-lambda-ci). You're welcome to use it, too.
 
+So, back to our CodeBuild setup - let's point it to our new Docker image:
 
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda4.png"/>
 
+For the actual build steps, we'll drop a [buildspec.yml](http://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-syntax) file into our repo which looks like this:
 
+```yml
+version: 0.2
 
+phases:
+  build:
+    commands:
+      - dotnet restore
+      - dotnet publish -c Release
+      - cd bin/Release/netcoreapp1.0/publish
+      - zip ../../../../MyProject.zip *
+      - cd ../../../..
+      - /root/bin/aws lambda update-function-code --function-name myTestLambda --zip-file fileb://MyProject.zip
 
+```
 
+And we're almost done. There's one more thing left to do: the AWS CLI needs proper credentials to talk to Lambda, so we need to set two environment variables, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`:
 
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda4.png"/>
 
+See [Managing Access Keys for IAM Users](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 
-
-
-
-
-### Trigger on git push
+### Real-time CI: build on git push
 
 
 
