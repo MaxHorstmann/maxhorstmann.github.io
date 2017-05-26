@@ -70,11 +70,23 @@ With the `LambdaSerializerAttribute`, JSON serialization will be taken care of. 
 
 ### Manual Deployment
 
-Before automating build & deployment, let's set up our lambda function manually. On the [AWS Lambda](https://console.aws.amazon.com/lambda/home) dashboard page, click *Create a Lambda Function* and select the *Blank Function* blueprint. Skip the *Configure triggers* page for now.
+Before automating build & deployment, let's set up our lambda function manually. On the [AWS Lambda dashboard page](https://console.aws.amazon.com/lambda/home), click *Create a Lambda Function* and select the *Blank Function* blueprint. Skip the *Configure triggers* page for now.
 
-On the *Configure Function* page, select the *C#* runtime (which should really be called *.NET Core 1.0*):
+On the *Configure Function* page, give your function a name and select the *C#* runtime (which should really be called *.NET Core 1.0*):
 
 <img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda1.png"/>
+
+You'll notice that unlike with other runtimes, unfortunately you can't just paste your code inline here put you'll need to uplodate a zip file with your compiled assembly and all references. 
+
+Time to build and package our function:
+
+```
+$ dotnet restore
+$ dotnet publish -c Release
+```
+
+
+
 
 
 ### Automatic Deployment
