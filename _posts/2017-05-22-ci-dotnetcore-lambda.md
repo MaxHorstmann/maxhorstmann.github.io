@@ -61,7 +61,11 @@ namespace MyNamespace
     {
     	public object MyFunction()
     	{
-    		return new { message = "Hello from Lambda!", time = DateTime.UtcNow };
+    		return new 
+    		{ 
+    			message = "Hello from Lambda!", 
+    			time = DateTime.UtcNow 
+    		};
     	}
     }
 }
@@ -179,7 +183,12 @@ Let's try it out and check in a small code change to `MyClass.cs`...
 ```csharp
     	public object MyFunction()
     	{
-    		return new { message = "Hello from Lambda!", automated_build = true, time = DateTime.UtcNow };
+    		return new 
+    			{ 
+    				message = "Hello from Lambda!", 
+    				automated_build = true, 
+    				time = DateTime.UtcNow 
+    			};
     	}
 ```
 
