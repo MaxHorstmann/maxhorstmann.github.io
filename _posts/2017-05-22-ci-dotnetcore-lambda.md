@@ -146,7 +146,7 @@ In order to get the new Docker image published to Docker Hub, I set up an [autom
 
 So, back to our CodeBuild setup - let's point it to our new Docker image:
 
-<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda4.png"/>
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda5.png"/>
 
 For the actual build steps, we'll drop a [buildspec.yml](http://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-syntax) file into our repo which looks like this:
 
@@ -167,7 +167,7 @@ phases:
 
 And we're almost done. There's one more thing left to do: the AWS CLI needs proper credentials to talk to Lambda, so we need to set two environment variables, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`:
 
-<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda5.png"/>
+<img style="display:block;margin-left:auto;margin-right:auto" src="/images/lambda6.png"/>
 
 See [Managing Access Keys for IAM Users](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 
