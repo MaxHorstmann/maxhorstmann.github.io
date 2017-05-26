@@ -5,9 +5,8 @@ date: 2017-05-22
 categories:
 - Coding
 - Continuous Integration
-status: draft
 type: post
-published: false
+published: true
 ---
 
 End of last year, [AWS Lambda](https://aws.amazon.com/lambda), Amazon's popular Function as a Service (FaaS) offering, [announced](https://aws.amazon.com/blogs/compute/announcing-c-sharp-support-for-aws-lambda) C# support based on the .NET Core runtime.
