@@ -9,6 +9,10 @@ type: post
 published: true
 ---
 
+**Update (5/28/2017)**: after I published this post, [Norm Johanson tweeted back](https://twitter.com/socketnorm/status/868345755697725440) and recommended using the [newly announced](https://aws.amazon.com/blogs/developer/deploying-net-core-aws-lambda-functions-from-the-command-line) dotnet CLI integration for Lambda for deployment. I [updated](https://github.com/MaxHorstmann/dotnetcore-lambda-sample/commit/b1d8267176d8ccc450f1f7d2e32c40c97898341f) my sample project accordingly and can confirm that this indeed works great with CodeBuild - neat!
+
+---
+
 End of last year, [AWS Lambda](https://aws.amazon.com/lambda), Amazon's popular Function as a Service (FaaS) offering, [announced](https://aws.amazon.com/blogs/compute/announcing-c-sharp-support-for-aws-lambda) C# support based on the .NET Core runtime.
 
 Which is neat, because there's a lot of interesting things you can do with Lambda. One of them is hosting [custom skills for Amazon Alexa](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function), Amazon's voice interface for Echo, for free. I'll blog about that use case in a later post. (Spoiler alert: "Alexa, any answers to my Stack Overflow questions?")
