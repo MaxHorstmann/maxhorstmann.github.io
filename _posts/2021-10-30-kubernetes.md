@@ -14,6 +14,6 @@ Earlier this year, I wrote a piece for the Stack Overflow Blog, slightly clickba
 
 I also had a chance to discuss it with [Ben](https://stackoverflow.blog/author/benpopper/) and [Ryan](https://stackoverflow.blog/author/rdonovan) on the [Stack Overflow podcast](https://stackoverflow.blog/2021/07/27/podcast-361-why-startups-should-use-kubernetes-from-day-one/).
 
-
+<a href="https://stackoverflow.blog/2021/07/27/podcast-361-why-startups-should-use-kubernetes-from-day-one/">
 <video muted="muted" src="https://dms.licdn.com/playlist/C5605AQES6GUgKE5r6w/mp4-720p-30fp-crf28/0/1627480818013?e=1635692400&amp;v=beta&amp;t=OSLiO-v8VAfXriclMKBaAF4WraO6d1wYPi-1GOO-TQ8" autoplay="autoplay"></video>
-
+</a>
