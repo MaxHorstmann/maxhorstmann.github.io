@@ -5,9 +5,9 @@ date: 2021-10-30
 categories:
 - kubernetes
 - docker
-status: draft
+status: post
 type: post
-published: no	
+published: yes	
 ---
 
 Earlier this year, I wrote a piece for the Stack Overflow Blog, slightly clickbait-y titled [Why you should build on Kubernetes from day one](https://stackoverflow.blog/2021/07/21/why-you-should-build-on-kubernetes-from-day-one/).
